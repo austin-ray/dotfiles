@@ -1,0 +1,14 @@
+[user]
+	email = austin@austinray.io
+	name = Austin Ray
+	signingKey = 0127ED83B939CCC98082476E1AA0B115C8AC2C9E
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
+	verbose = true
+[gpg]
+	program = gpg
