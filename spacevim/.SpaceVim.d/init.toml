@@ -73,3 +73,6 @@ name="gtags"
 
 [[layers]]
 name="lang#latex"
+
+[[layers]]
+name="lang#nix"
