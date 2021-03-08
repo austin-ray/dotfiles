@@ -181,3 +181,4 @@ exec /usr/bin/xset s 300 5
 exec xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
 exec feh --bg-fill /home/aray/pictures/wallpapers/Toronto-KingSt-Datacenter-1.jpg &
 exec ibus-daemon -drx
+exec solaar
