@@ -5,6 +5,7 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+	ff = false
 [color]
 	ui = auto
 [commit]
