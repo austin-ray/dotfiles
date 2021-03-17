@@ -11,6 +11,8 @@ font:
     family: Hack
     style: Italic
   size: 12
+window:
+  dynamic_padding: true
 
 # Base16 Eighties 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
