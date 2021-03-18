@@ -19,4 +19,9 @@ endif
 unlet autoload_plug_path
 
 call plug#begin()
+    Plug 'davidbeckingsale/writegood.vim'
 call plug#end()
+
+
+" Writegood Configuration
+autocmd Filetype git,mail  WritegoodEnable
