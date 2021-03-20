@@ -14,6 +14,10 @@ call plug#begin()
 
     " Colorschemes
     Plug 'chriskempson/base16-vim'
+
+    " Automatically respect project-specific formatting.
+    Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 "########################### Base Vim configuration ##########################
