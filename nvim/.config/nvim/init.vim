@@ -15,6 +15,9 @@ call plug#end()
 
 "########################### Base Vim configuration ##########################
 
+" Space is more convenient than \
+let mapleader=" "
+
 " Line numbers
 set number
 set relativenumber
