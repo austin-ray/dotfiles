@@ -1,13 +1,4 @@
-" Line numbers
-set number
-set relativenumber
-
-" Tab to spaces
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-
-"###################### Plugins and related configuration #####################
+"############################## Plugins ##################################
 
 " Automatically install vim-plug plugin manager.
 let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
@@ -22,6 +13,18 @@ call plug#begin()
     Plug 'davidbeckingsale/writegood.vim'
 call plug#end()
 
+"########################### Base Vim configuration ##########################
+
+" Line numbers
+set number
+set relativenumber
+
+" Tab to spaces
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
+"######################## Plugin-related configuration #######################
 
 " Writegood Configuration
 autocmd Filetype gitcommit,mail  WritegoodEnable
