@@ -1,0 +1,24 @@
+# .notmuch-config - Configuration file for the notmuch mail system
+#
+# For more information about notmuch, see https://notmuchmail.org
+[database]
+path=/home/aray/mail
+
+[user]
+name=Austin Ray
+primary_email=austin@austinray.io
+
+other_email=austin.duke.ray@gmail.com;austinray1995@gmail.com;adr1396@uncw.edu;rangebro99@gmail.com;
+
+[new]
+tags=unread;inbox;
+ignore=/.*(mbsyncstate|uidvalidity)/
+
+[search]
+exclude_tags=spam;deleted
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg
