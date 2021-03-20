@@ -11,6 +11,9 @@ unlet autoload_plug_path
 
 call plug#begin()
     Plug 'davidbeckingsale/writegood.vim'
+
+    " Colorschemes
+    Plug 'chriskempson/base16-vim'
 call plug#end()
 
 "########################### Base Vim configuration ##########################
@@ -26,6 +29,10 @@ set relativenumber
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+
+" Enable 24-bit color allowing color scheme to work without visual errors.
+set termguicolors
+colorscheme base16-eighties
 
 "######################## Plugin-related configuration #######################
 
