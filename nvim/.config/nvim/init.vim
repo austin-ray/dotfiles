@@ -18,6 +18,9 @@ call plug#begin()
     " Automatically respect project-specific formatting.
     Plug 'editorconfig/editorconfig-vim'
 
+    " Enable syntax highlighting for hundreds of file formats.
+    Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 "########################### Base Vim configuration ##########################
