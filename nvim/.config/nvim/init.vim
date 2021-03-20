@@ -24,4 +24,4 @@ call plug#end()
 
 
 " Writegood Configuration
-autocmd Filetype git,mail  WritegoodEnable
+autocmd Filetype gitcommit,mail  WritegoodEnable
