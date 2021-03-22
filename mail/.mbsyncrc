@@ -1,0 +1,244 @@
+IMAPAccount       austin@austinray.io-account
+Host              imap.gmail.com
+User              austin@austinray.io
+PassCmd           "pass show Mail/austin-app"
+SSLType           IMAPS
+SSLVersions       TLSv1.1
+CertificateFile   /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore         austin@austinray.io-remote
+Account           austin@austinray.io-account
+
+MaildirStore      austin@austinray.io-local
+Path              ~/mail/austin@austinray.io/
+Inbox             ~/mail/austin@austinray.io/INBOX
+
+Channel           austin@austinray.io-inbox
+Master            :austin@austinray.io-remote:
+Slave             :austin@austinray.io-local:
+Patterns          "INBOX"
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin@austinray.io-sent
+Master            :austin@austinray.io-remote:"[Gmail]/Sent Mail"
+Slave             :austin@austinray.io-local:sent
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin@austinray.io-archive
+Master            :austin@austinray.io-remote:"[Gmail]/All Mail"
+Slave             :austin@austinray.io-local:archive
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin@austinray.io-spam
+Master            :austin@austinray.io-remote:"[Gmail]/Spam"
+Slave             :austin@austinray.io-local:spam
+Create            Both
+Expunge           Both
+SyncState         *
+
+Group             austin@austinray.io
+Channel           austin@austinray.io-inbox
+Channel           austin@austinray.io-sent
+Channel           austin@austinray.io-archive
+Channel           austin@austinray.io-spam
+
+
+IMAPAccount       austinray1995@gmail.com-account
+Host              imap.gmail.com
+User              austinray1995@gmail.com
+PassCmd           "pass show Mail/austinray1995-app"
+SSLType           IMAPS
+SSLVersions       TLSv1.1
+CertificateFile   /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore         austinray1995@gmail.com-remote
+Account           austinray1995@gmail.com-account
+
+MaildirStore      austinray1995@gmail.com-local
+Path              ~/mail/austinray1995@gmail.com/
+Inbox             ~/mail/austinray1995@gmail.com/INBOX
+
+Channel           austinray1995@gmail.com-inbox
+Master            :austinray1995@gmail.com-remote:
+Slave             :austinray1995@gmail.com-local:
+Patterns          "INBOX"
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austinray1995@gmail.com-sent
+Master            :austinray1995@gmail.com-remote:"[Gmail]/Sent Mail"
+Slave             :austinray1995@gmail.com-local:sent
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austinray1995@gmail.com-archive
+Master            :austinray1995@gmail.com-remote:"[Gmail]/All Mail"
+Slave             :austinray1995@gmail.com-local:archive
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austinray1995@gmail.com-spam
+Master            :austinray1995@gmail.com-remote:"[Gmail]/Spam"
+Slave             :austinray1995@gmail.com-local:spam
+Create            Both
+Expunge           Both
+SyncState         *
+
+Group             austinray1995@gmail.com
+Channel           austinray1995@gmail.com-inbox
+Channel           austinray1995@gmail.com-sent
+Channel           austinray1995@gmail.com-archive
+Channel           austinray1995@gmail.com-spam
+
+
+IMAPAccount       austin.duke.ray@gmail.com-account
+Host              imap.gmail.com
+User              austin.duke.ray@gmail.com
+PassCmd           "pass show Mail/austin.duke.ray-app"
+SSLType           IMAPS
+SSLVersions       TLSv1.1
+CertificateFile   /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore         austin.duke.ray@gmail.com-remote
+Account           austin.duke.ray@gmail.com-account
+
+MaildirStore      austin.duke.ray@gmail.com-local
+Path              ~/mail/austin.duke.ray@gmail.com/
+Inbox             ~/mail/austin.duke.ray@gmail.com/INBOX
+
+Channel           austin.duke.ray@gmail.com-inbox
+Master            :austin.duke.ray@gmail.com-remote:
+Slave             :austin.duke.ray@gmail.com-local:
+Patterns          "INBOX"
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin.duke.ray@gmail.com-sent
+Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/Sent Mail"
+Slave             :austin.duke.ray@gmail.com-local:sent
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin.duke.ray@gmail.com-archive
+Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/All Mail"
+Slave             :austin.duke.ray@gmail.com-local:archive
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           austin.duke.ray@gmail.com-spam
+Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/Spam"
+Slave             :austin.duke.ray@gmail.com-local:spam
+Create            Both
+Expunge           Both
+SyncState         *
+
+Group             austin.duke.ray@gmail.com
+Channel           austin.duke.ray@gmail.com-inbox
+Channel           austin.duke.ray@gmail.com-sent
+Channel           austin.duke.ray@gmail.com-archive
+Channel           austin.duke.ray@gmail.com-spam
+
+
+IMAPAccount       rangebro99@gmail.com-account
+Host              imap.gmail.com
+User              rangebro99@gmail.com
+PassCmd           "pass show Mail/rangebro99-app"
+SSLType           IMAPS
+SSLVersions       TLSv1.1
+CertificateFile   /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore         rangebro99@gmail.com-remote
+Account           rangebro99@gmail.com-account
+
+MaildirStore      rangebro99@gmail.com-local
+Path              ~/mail/rangebro99@gmail.com/
+Inbox             ~/mail/rangebro99@gmail.com/INBOX
+
+Channel           rangebro99@gmail.com-inbox
+Master            :rangebro99@gmail.com-remote:
+Slave             :rangebro99@gmail.com-local:
+Patterns          "INBOX"
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           rangebro99@gmail.com-sent
+Master            :rangebro99@gmail.com-remote:"[Gmail]/Sent Mail"
+Slave             :rangebro99@gmail.com-local:sent
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           rangebro99@gmail.com-archive
+Master            :rangebro99@gmail.com-remote:"[Gmail]/All Mail"
+Slave             :rangebro99@gmail.com-local:archive
+Create            Both
+Expunge           Both
+SyncState         *
+
+Channel           rangebro99@gmail.com-spam
+Master            :rangebro99@gmail.com-remote:"[Gmail]/Spam"
+Slave             :rangebro99@gmail.com-local:spam
+Create            Both
+Expunge           Both
+SyncState         *
+
+Group             rangebro99@gmail.com
+Channel           rangebro99@gmail.com-inbox
+Channel           rangebro99@gmail.com-sent
+Channel           rangebro99@gmail.com-archive
+Channel           rangebro99@gmail.com-spam
+
+
+#IMAPAccount       adr1396@uncw.edu-account
+#Host              outlook.office365.com
+#User              adr1396@uncw.edu
+#PassCmd           "pass show Mail/adr1396-app"
+#SSLType           IMAPS
+#CertificateFile   /etc/ssl/certs/ca-certificates.crt
+#
+#IMAPStore         adr1396@uncw.edu-remote
+#Account           adr1396@uncw.edu-account
+#
+#MaildirStore      adr1396@uncw.edu-local
+#Path              ~/mail/adr1396@uncw.edu/
+#Inbox             ~/mail/adr1396@uncw.edu/INBOX
+#
+#Channel           adr1396@uncw.edu-inbox
+#Master            :adr1396@uncw.edu-remote:
+#Slave             :adr1396@uncw.edu-local:
+#Patterns          "INBOX"
+#Create            Both
+#Expunge           Both
+#SyncState         *
+#
+#Channel           adr1396@uncw.edu-sent
+#Master            :adr1396@uncw.edu-remote:"Sent Items"
+#Slave             :adr1396@uncw.edu-local:sent
+#Create            Both
+#Expunge           Both
+#SyncState         *
+#
+#Channel           adr1396@uncw.edu-spam
+#Master            :adr1396@uncw.edu-remote:"Spam"
+#Slave             :adr1396@uncw.edu-local:spam
+#Create            Both
+#Expunge           Both
+#SyncState         *
+#
+#Group             adr1396@uncw.edu
+#Channel           adr1396@uncw.edu-inbox
+#Channel           adr1396@uncw.edu-sent
+#Channel           adr1396@uncw.edu-spam
