@@ -1,0 +1,3 @@
+#!/bin/bash
+mbsync -Va
+/home/aray/.local/bin/notmuch-tag
