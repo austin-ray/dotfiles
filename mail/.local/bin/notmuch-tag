@@ -1,0 +1,116 @@
+#!/bin/sh
+echo "Importing new mail" 
+notmuch new --quiet
+# Tag spam
+echo "Tagging spam"
+notmuch tag --remove-all +spam -- folder:austinray1995@gmail.com/spam \
+                               OR folder:austin.duke.ray@gmail.com/spam \
+                               OR folder:rangebro99@gmail.com/spam \
+                               OR folder:austin@austinray.io/spam
+
+# Retag all emails with new as inbox and unread.
+notmuch tag +inbox +unread -new -- tag:new
+
+# tag all messages from "me" as sent and remove tags inbox and unread
+notmuch tag -new -unread -inbox +sent -- from:rangebro99@gmail.com  \
+                                      OR from:austin.duke.ray@gmail.com \
+                                      OR from:adr1396@uncw.edu \
+                                      OR from:austinray1995@gmail.com \
+                                      OR from:austin@austinray.io
+
+# Tag emails sent to my various emails.
+echo "Adding appropriate account tags to respective emails."
+
+notmuch tag +ar     --  to:austin@austinray.io AND tag:inbox
+notmuch tag +a.d.r  --  to:austin.duke.ray@gmail.com AND tag:inbox
+notmuch tag +uncw   --  to:adr1396@uncw.edu AND tag:inbox
+notmuch tag +a95    --  to:austinray1995@gmail.com AND tag:inbox
+notmuch tag +r99    --  to:rangebro99@gmail.com AND tag:inbox
+
+echo "Complete."
+
+AL="archlinux.org"
+GL="lists.gentoo.org"
+KN="kernelnewbies.org"
+NM="neomutt.org"
+
+
+echo "Tagging broad categories"
+notmuch tag +arch               --  tag:list AND to:"$AL"
+notmuch tag +gentoo		--  tag:list AND '(' to:"$GL" OR from:"$GL" ')'
+notmuch tag +neomutt            --  tag:list AND to:"$NM" OR subject:*neomutt*
+notmuch tag +linux              --  tag:arch OR tag:gentoo OR to:kernelnewbies
+notmuch tag +zfs		--  from:list.zfsonlinux.org OR to:list.zfsonlinux.org
+
+notmuch tag +user		--  '(' to:gentoo-user@"$GL" OR from:gentoo-user@"$GL" ')'
+
+notmuch tag -inbox              --  tag:neomutt OR tag:arch OR tag:linux
+
+# Tag mailing lists
+echo "Tagging mailing lists."
+notmuch tag +list       --  '(' to:"$KN" OR to:"$AL" OR to:"$NM" OR to:"$GL" ')' AND NOT tag:sent
+notmuch tag +list       --  '(' from:"$KN" OR from:"$AL" OR from:"$NM" OR from:"$GL" ')' AND NOT tag:sent
+notmuch tag +list       --  '(' stratis-devel ')' AND NOT tag:sent
+notmuch tag +list	--  from:list.*.org OR to:list.*.org
+notmuch tag +list -- tag:zfs
+
+echo "Tagging specific categories"
+notmuch tag +linkedin           --  from:linkedin.com
+notmuch tag +twitter            --  from:twitter
+notmuch tag +massdrop           --  from:*massdrop.com OR from:*drop.com
+
+notmuch tag +knewbies           --  to:kernelnewbies
+notmuch tag +devel              --  tag:list AND '(' to:arch-dev-public OR to:neomutt-devel@* ')'
+notmuch tag +user               --  tag:list AND '(' to:neomutt-users ')'
+
+notmuch tag +announce           --  tag:list AND '(' to:arch-announce OR to:gentoo-announce')'
+notmuch tag +inbox              --  tag:announce AND NOT tag:archive
+
+notmuch tag +important          --  tag:announce OR from:notifications@n.massdrop.com
+
+notmuch tag +socialmedia        --  tag:linkedin OR tag:twitter
+
+notmuch tag +ad                 --  tag:massdrop
+
+notmuch tag +trello             --  from:trello
+notmuch tag +political          --  from:berniesanders.com OR from:actblue.com
+notmuch tag +github             --  from:github.com
+
+echo "Removing inbox tag from categories"
+notmuch tag -inbox              --  '(' tag:knewbies OR tag:neomutt-users ')'
+notmuch tag -inbox              --  '(' \
+                                        from:jobs-listing OR \
+                                        from:jobs-noreply OR \
+                                        from:news OR \
+                                        from:messages-noreply OR \
+                                        from:jobalerts-noreply OR \
+                                        from:invitations \
+                                    ')' \
+                                    AND tag:linkedin
+
+notmuch tag -inbox              --  '(' tag:massdrop ')' AND NOT from:notifications@.n.massdrop
+
+notmuch tag -inbox              --  tag:trello
+notmuch tag -inbox		          --  tag:zfs
+notmuch tag -inbox              --  tag:political
+
+notmuch tag +inbox              --  tag:important AND NOT tag:archive
+
+echo "Complete."
+
+# Tag old emails as archive
+echo "Moving older messages to the archive."
+
+notmuch tag +archive -inbox -- date:..2week AND NOT '(' tag:unread OR tag:important ')'
+
+
+notmuch tag +archive        --  NOT tag:unread
+
+notmuch tag +important -- tag:flagged
+notmuch tag -important -- tag:flagged
+
+echo "Complete."
+
+echo "All done. Goodbye!"
+
+# vim tw=72
