@@ -1,0 +1,50 @@
+# Personal email inboxes
+set spoolfile="inbox/unread"
+#set virtual_spoolfile=yes
+
+virtual-mailboxes "sent"                  "notmuch://?query=tag:sent"
+virtual-mailboxes "inbox"                 "notmuch://?query=tag:inbox"
+virtual-mailboxes "inbox/unread"          "notmuch://?query=(tag:inbox OR (tag:important AND tag:inbox)) AND tag:unread"
+virtual-mailboxes "important"             "notmuch://?query=tag:important"
+virtual-mailboxes "unread"                "notmuch://?query=tag:unread"
+virtual-mailboxes "archive"               "notmuch://?query=tag:archive"
+virtual-mailboxes "newsletter"            "notmuch://?query=tag:newsletters"
+virtual-mailboxes "list"                  "notmuch://?query=tag:list"
+
+# Neomutt-related mailboxes
+virtual-mailboxes "neomutt/all"           "notmuch://?query=tag:neomutt"
+virtual-mailboxes "neomutt/devel"         "notmuch://?query=tag:neomutt AND tag:devel"
+virtual-mailboxes "neomutt/user"          "notmuch://?query=tag:neomutt AND tag:user"
+
+### Linux-related mailboxes ###
+
+virtual-mailboxes "linux"                 "notmuch://?query=tag:linux"
+virtual-mailboxes "linux/kernel"          "notmuch://?query=tag:knewbies AND tag:linux"
+virtual-mailboxes "linux/kernel/newbies"  "notmuch://?query=tag:knewbies"
+
+# Arch Linux-related mailboxes
+virtual-mailboxes "linux/arch"            "notmuch://?query=tag:arch"
+virtual-mailboxes "linux/arch/announce"   "notmuch://?query=tag:arch AND tag:announce"
+virtual-mailboxes "linux/arch/dev"        "notmuch://?query=tag:arch AND tag:devel"
+
+# Gentoo Linux-related mailboxes
+virtual-mailboxes "linux/gentoo"  	      "notmuch://?query=tag:gentoo"
+virtual-mailboxes "linux/gentoo/announce" "notmuch://?query=tag:gentoo AND tag:announce"
+virtual-mailboxes "linux/gentoo/user" 	  "notmuch://?query=tag:gentoo AND tag:user"
+
+# Social media mailboxes
+virtual-mailboxes "social"                "notmuch://?query=tag:socialmedia"
+virtual-mailboxes "social/linkedin"       "notmuch://?query=tag:linkedin"
+virtual-mailboxes "social/twitter"        "notmuch://?query=tag:twitter"
+
+# Ad related mailboxes
+virtual-mailboxes "ad"                    "notmuch://?query=tag:ad"
+virtual-mailboxes "ad/massdrop"           "notmuch://?query=tag:ad AND tag:massdrop"
+
+
+virtual-mailboxes "past"                   "notmuch://?query=date:.."
+virtual-mailboxes "past/week"              "notmuch://?query=date:1w..     AND NOT (tag:spam)"
+virtual-mailboxes "past/month"             "notmuch://?query=date:1month.. AND NOT (tag:spam)"
+virtual-mailboxes "past/year"              "notmuch://?query=date:1year..  AND NOT (tag:spam)"
+
+# vim: ft=neomuttrc
