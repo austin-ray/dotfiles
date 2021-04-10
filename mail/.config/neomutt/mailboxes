@@ -13,8 +13,8 @@ virtual-mailboxes "list"                  "notmuch://?query=tag:list"
 
 # Neomutt-related mailboxes
 virtual-mailboxes "neomutt/all"           "notmuch://?query=tag:neomutt"
-virtual-mailboxes "neomutt/devel"         "notmuch://?query=tag:neomutt AND tag:devel"
-virtual-mailboxes "neomutt/user"          "notmuch://?query=tag:neomutt AND tag:user"
+virtual-mailboxes "neomutt/github"        "notmuch://?query=tag:neomutt AND from:github.com"
+virtual-mailboxes "neomutt/list"          "notmuch://?query=tag:neomutt AND tag:devel AND NOT from:github.com"
 
 ### Linux-related mailboxes ###
 
