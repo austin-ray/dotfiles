@@ -10,6 +10,7 @@ set message_cachedir = ~/.cache/neomutt/bodies/
 set certificate_file = ~/.config/neomutt/certificates
 set mailcap_path     = ~/.config/neomutt/mailcap
 set tmpdir           = ~/.cache/neomutt/temp/
+set signature        = ~/.config/neomutt/signature
 
 # Alias Settings -------------------------------------
 set sort_alias = alias
