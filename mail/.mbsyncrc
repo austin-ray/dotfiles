@@ -1,7 +1,7 @@
 IMAPAccount       austin@austinray.io-account
 Host              imap.gmail.com
 User              austin@austinray.io
-PassCmd           "pass show Mail/austin-app"
+PassCmd           "pass show Mail/austin"
 SSLType           IMAPS
 SSLVersions       TLSv1.1
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
@@ -52,7 +52,7 @@ Channel           austin@austinray.io-spam
 IMAPAccount       austinray1995@gmail.com-account
 Host              imap.gmail.com
 User              austinray1995@gmail.com
-PassCmd           "pass show Mail/austinray1995-app"
+PassCmd           "pass show Mail/austinray1995"
 SSLType           IMAPS
 SSLVersions       TLSv1.1
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
@@ -103,7 +103,7 @@ Channel           austinray1995@gmail.com-spam
 IMAPAccount       austin.duke.ray@gmail.com-account
 Host              imap.gmail.com
 User              austin.duke.ray@gmail.com
-PassCmd           "pass show Mail/austin.duke.ray-app"
+PassCmd           "pass show Mail/austin.duke.ray"
 SSLType           IMAPS
 SSLVersions       TLSv1.1
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
@@ -154,7 +154,7 @@ Channel           austin.duke.ray@gmail.com-spam
 IMAPAccount       rangebro99@gmail.com-account
 Host              imap.gmail.com
 User              rangebro99@gmail.com
-PassCmd           "pass show Mail/rangebro99-app"
+PassCmd           "pass show Mail/rangebro99"
 SSLType           IMAPS
 SSLVersions       TLSv1.1
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
@@ -205,7 +205,7 @@ Channel           rangebro99@gmail.com-spam
 #IMAPAccount       adr1396@uncw.edu-account
 #Host              outlook.office365.com
 #User              adr1396@uncw.edu
-#PassCmd           "pass show Mail/adr1396-app"
+#PassCmd           "pass show Mail/adr1396"
 #SSLType           IMAPS
 #CertificateFile   /etc/ssl/certs/ca-certificates.crt
 #
