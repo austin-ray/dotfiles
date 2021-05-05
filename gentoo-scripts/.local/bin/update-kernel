@@ -1,0 +1,27 @@
+#!/bin/sh
+update_kernel() {
+  eselect kernel list
+  read -p "Select new kernel [n to exit]: " answer
+  while true;
+  do
+    case "$answer" in
+      [123456789]* )
+        eselect kernel set $answer
+        break
+        ;;
+      [nN] )
+        exit
+        ;;
+      *) 
+        echo "Enter a valid number or n to exit"
+        ;;
+    esac
+  done
+  genkernel --menuconfig --makeopts="-j17" --zfs --compress-initramfs-type=zstd all
+  emerge @module-rebuild
+  eclean-kernel -n 3
+  grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+sudo sh -c "$(declare -f update_kernel); update_kernel"
+
