@@ -1,0 +1,11 @@
+let mapleader = " "
+nmap <leader>rn  :action RenameElement<CR>
+
+nmap gd :action GotoDeclarationOnly<CR>
+"nmap gs <plug>(lsp-document-symbol-search)
+nmap gS :action SearchEverywhere<CR>
+nmap gr :action ShowUsages<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gt :action GotoTypeDeclaration<CR>
+nmap [g :action GotoPreviousError<CR>
+nmap ]g :action GotoNextError<CR>
