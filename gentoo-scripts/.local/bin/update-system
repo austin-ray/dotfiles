@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo emaint sync --all && sudo emerge --ask -uDU @world
