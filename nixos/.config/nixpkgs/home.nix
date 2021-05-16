@@ -30,6 +30,7 @@
     pkgs.jetbrains.idea-community
     pkgs.jetbrains.pycharm-professional
     pkgs.keepassxc
+    pkgs.libreoffice
     pkgs.neomutt
     pkgs.openscad
     pkgs.rust-analyzer
