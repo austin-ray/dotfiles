@@ -33,6 +33,7 @@
     pkgs.neomutt
     pkgs.openscad
     pkgs.rust-analyzer
+    pkgs.stow
     pkgs.syncthing
   ];
 
