@@ -1,2 +1,3 @@
 #!/bin/sh
-sudo emaint sync --all && sudo emerge --ask -uDN @world
+EMERGE_OPTS="--ask -uDN"
+sudo emaint sync --all && sudo emerge $EMERGE_OPTS @world
