@@ -50,10 +50,10 @@ set termguicolors
 colorscheme base16-eighties
 
 " Delegate folding to LSP
-set foldmethod=expr
-set foldexpr=lsp#ui#vim#folding#foldexpr()
-set foldtext=lsp#ui#vim#folding#foldtext()
-set foldlevelstart=99 " Don't fold buffer on open.
+"set foldmethod=expr
+"set foldexpr=lsp#ui#vim#folding#foldexpr()
+"set foldtext=lsp#ui#vim#folding#foldtext()
+"set foldlevelstart=99 " Don't fold buffer on open.
 
 "######################## Plugin-related configuration #######################
 
