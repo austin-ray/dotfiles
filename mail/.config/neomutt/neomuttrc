@@ -160,7 +160,7 @@ auto_view text/html
 alternative_order text/plain  text/html
 
 #fcc-save-hook . $HOME/.mail/%a/sent
-send2-hook . "set record=$from/sent"
+#send2-hook . "set record=$from/sent"
 macro attach s <save-entry><kill-line>/home/aray/email_attachments/
 
 bind pager,index X vfolder-from-query
