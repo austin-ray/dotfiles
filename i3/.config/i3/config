@@ -61,6 +61,7 @@ bindsym $meta+$alt+h split h
 
 # split in vertical orientation
 bindsym $meta+space split toggle
+bindsym $meta+s split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $meta+f fullscreen toggle
