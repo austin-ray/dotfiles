@@ -15,3 +15,8 @@
 	program = gpg
 [init]
 	defaultBranch = main
+[sendemail]
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = austin@austinray.io
+	smtpserverport = 587
