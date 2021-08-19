@@ -22,3 +22,6 @@ synchronize_flags=true
 
 [crypto]
 gpg_path=gpg
+
+[query]
+me=(to:austin@austinray.io OR to:austin.duke.ray@gmail.com OR to:austinray1995@gmail.com OR to:adr1396@uncw.edu OR to:rangebro99@gmail.com)

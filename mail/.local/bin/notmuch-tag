@@ -94,7 +94,7 @@ notmuch tag -inbox              --  '(' tag:massdrop ')' AND NOT from:notificati
 notmuch tag -inbox              --  tag:trello
 notmuch tag -inbox		          --  tag:zfs
 notmuch tag -inbox              --  tag:political
-notmuch tag -inbox              --  tag:notmuch
+notmuch tag -inbox              --  tag:notmuch AND NOT query:me
 
 notmuch tag +inbox              --  tag:important AND NOT tag:archive
 
