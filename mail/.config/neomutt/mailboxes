@@ -16,6 +16,10 @@ virtual-mailboxes "neomutt/all"           "notmuch://?query=tag:neomutt"
 virtual-mailboxes "neomutt/github"        "notmuch://?query=tag:neomutt AND from:github.com"
 virtual-mailboxes "neomutt/list"          "notmuch://?query=tag:neomutt AND NOT from:github.com"
 
+# notmuch-related mailboxes
+virtual-mailboxes "notmuch"               "notmuch://?query=tag:notmuch"
+virtual-mailboxes "notmuch/unread"        "notmuch://?query=tag:notmuch AND tag:unread"
+
 ### Linux-related mailboxes ###
 
 virtual-mailboxes "linux"                 "notmuch://?query=tag:linux"

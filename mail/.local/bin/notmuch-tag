@@ -34,11 +34,11 @@ GL="lists.gentoo.org"
 KN="kernelnewbies.org"
 NM="neomutt.org"
 
-
 echo "Tagging broad categories"
 notmuch tag +arch               --  tag:list AND to:"$AL"
 notmuch tag +gentoo		--  tag:list AND '(' to:"$GL" OR from:"$GL" ')'
 notmuch tag +neomutt            --  tag:list AND to:"$NM" OR subject:*neomutt*
+notmuch tag +notmuch            --  to:notmuch@notmuchmail.org
 notmuch tag +linux              --  tag:arch OR tag:gentoo OR to:kernelnewbies
 notmuch tag +zfs		--  from:list.zfsonlinux.org OR to:list.zfsonlinux.org
 
@@ -53,6 +53,7 @@ notmuch tag +list       --  '(' from:"$KN" OR from:"$AL" OR from:"$NM" OR from:"
 notmuch tag +list       --  '(' stratis-devel ')' AND NOT tag:sent
 notmuch tag +list	--  from:list.*.org OR to:list.*.org
 notmuch tag +list -- tag:zfs
+notmuch tag +list -- tag:notmuch
 
 echo "Tagging specific categories"
 notmuch tag +linkedin           --  from:linkedin.com
@@ -93,6 +94,7 @@ notmuch tag -inbox              --  '(' tag:massdrop ')' AND NOT from:notificati
 notmuch tag -inbox              --  tag:trello
 notmuch tag -inbox		          --  tag:zfs
 notmuch tag -inbox              --  tag:political
+notmuch tag -inbox              --  tag:notmuch
 
 notmuch tag +inbox              --  tag:important AND NOT tag:archive
 
