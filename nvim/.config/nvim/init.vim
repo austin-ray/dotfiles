@@ -45,6 +45,12 @@ call plug#begin()
         Plug 'nvim-lua/popup.nvim'
         Plug 'nvim-lua/plenary.nvim'
         Plug 'nvim-telescope/telescope.nvim'
+
+        " Treesitter required for Neorg
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+        " Neorg for an org-mode experience
+        Plug 'vhyrro/neorg'
     endif
 call plug#end()
 
@@ -96,6 +102,7 @@ if has('nvim-0.5')
     let g:compe.source.ultisnips = v:true
     let g:compe.source.luasnip = v:true
     let g:compe.source.emoji = v:true
+    let g:compe.source.neorg = v:true
 
     inoremap <silent><expr> <C-Space> compe#complete()
     inoremap <silent><expr> <CR>      compe#confirm('<CR>')
@@ -227,4 +234,39 @@ if has('nvim-0.5')
     xmap        s   <Plug>(vsnip-select-text)
     nmap        S   <Plug>(vsnip-cut-text)
     xmap        S   <Plug>(vsnip-cut-text)
+
+" neorg configuration
+lua << EOF
+    require('neorg').setup {
+        -- Tell Neorg what modules to load
+        load = {
+            ["core.defaults"] = {}, -- Load all the default modules
+            ["core.norg.concealer"] = {}, -- Allows for use of icons
+            ["core.norg.dirman"] = { -- Manage your directories with Neorg
+                config = {
+                    workspaces = {
+                        my_workspace = "~/neorg"
+                    }
+                }
+            }
+        },
+    }
+
+    local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+    parser_configs.norg = {
+        install_info = {
+            url = "https://github.com/vhyrro/tree-sitter-norg",
+            files = { "src/parser.c" },
+            branch = "main"
+        },
+    }
+
+    require('nvim-treesitter.configs').setup {
+      ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust"},
+      highlight = {
+        enable = true,
+      }
+    }
+EOF
 endif
