@@ -45,10 +45,4 @@ virtual-mailboxes "social/twitter"        "notmuch://?query=tag:twitter"
 virtual-mailboxes "ad"                    "notmuch://?query=tag:ad"
 virtual-mailboxes "ad/massdrop"           "notmuch://?query=tag:ad AND tag:massdrop"
 
-
-virtual-mailboxes "past"                   "notmuch://?query=date:.."
-virtual-mailboxes "past/week"              "notmuch://?query=date:1w..     AND NOT (tag:spam)"
-virtual-mailboxes "past/month"             "notmuch://?query=date:1month.. AND NOT (tag:spam)"
-virtual-mailboxes "past/year"              "notmuch://?query=date:1year..  AND NOT (tag:spam)"
-
 # vim: ft=neomuttrc
