@@ -20,3 +20,5 @@
 	smtpserver = smtp.gmail.com
 	smtpuser = austin@austinray.io
 	smtpserverport = 587
+[core]
+	pager = diff-highlight | less
