@@ -52,6 +52,9 @@ call plug#begin()
         " Neorg for an org-mode experience
         Plug 'vhyrro/neorg'
     endif
+
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 "########################### Base Vim configuration ##########################
