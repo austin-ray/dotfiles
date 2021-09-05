@@ -238,6 +238,8 @@ if has('nvim-0.5')
     nmap        S   <Plug>(vsnip-cut-text)
     xmap        S   <Plug>(vsnip-cut-text)
 
+    nmap <buffer> <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
+    tnoremap <ESC><ESC> <C-\><C-N>
 " neorg configuration
 lua << EOF
     require('neorg').setup {
