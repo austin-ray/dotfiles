@@ -22,36 +22,24 @@ call plug#begin()
     Plug 'sheerun/vim-polyglot'
 
     " Enable LSP for better development experience.
-    if has('nvim-0.5')
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'kabouzeid/nvim-lspinstall' " Helper to install LSP servers.
-    else
-        Plug 'prabirshrestha/vim-lsp'
-        Plug 'mattn/vim-lsp-settings' " Convienent settings.
-    endif
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'kabouzeid/nvim-lspinstall' " Helper to install LSP servers.
 
-    " LSP works better with deoplete
-    if has('nvim-0.5')
-        Plug 'hrsh7th/nvim-compe'
-        Plug 'hrsh7th/vim-vsnip'
-        Plug 'rafamadriz/friendly-snippets'
-    else
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'lighttiger2505/deoplete-vim-lsp'
-    endif
+    " LSP works better with a completion engine.
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'rafamadriz/friendly-snippets'
 
-    if has('nvim-0.5')
-        " Telescope for file navigation
-        Plug 'nvim-lua/popup.nvim'
-        Plug 'nvim-lua/plenary.nvim'
-        Plug 'nvim-telescope/telescope.nvim'
+    " Telescope for file navigation
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 
-        " Treesitter required for Neorg
-        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Treesitter required for Neorg
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-        " Neorg for an org-mode experience
-        Plug 'vhyrro/neorg'
-    endif
+    " Neorg for an org-mode experience
+    Plug 'vhyrro/neorg'
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -78,48 +66,43 @@ colorscheme base16-eighties
 "######################## Plugin-related configuration #######################
 
 " Deoplete configuration
-if has('nvim-0.5')
-    set completeopt=menuone,noselect
-    let g:compe = {}
-    let g:compe.enabled = v:true
-    let g:compe.autocomplete = v:true
-    let g:compe.debug = v:false
-    let g:compe.min_length = 1
-    let g:compe.preselect = 'enable'
-    let g:compe.throttle_time = 80
-    let g:compe.source_timeout = 200
-    let g:compe.resolve_timeout = 800
-    let g:compe.incomplete_delay = 400
-    let g:compe.max_abbr_width = 100
-    let g:compe.max_kind_width = 100
-    let g:compe.max_menu_width = 100
-    let g:compe.documentation = v:true
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
 
-    let g:compe.source = {}
-    let g:compe.source.path = v:true
-    let g:compe.source.buffer = v:true
-    let g:compe.source.calc = v:true
-    let g:compe.source.nvim_lsp = v:true
-    let g:compe.source.nvim_lua = v:true
-    let g:compe.source.vsnip = v:true
-    let g:compe.source.ultisnips = v:true
-    let g:compe.source.luasnip = v:true
-    let g:compe.source.emoji = v:true
-    let g:compe.source.neorg = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.luasnip = v:true
+let g:compe.source.emoji = v:true
+let g:compe.source.neorg = v:true
 
-    inoremap <silent><expr> <C-Space> compe#complete()
-    inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-    inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-else
-    let g:deoplete#enable_at_startup = 1
-endif
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
 " Writegood Configuration
 autocmd Filetype gitcommit,mail  WritegoodEnable
 
 " LSP configurations
 " Override default Vim with sensible LSP verisons.
-if has('nvim-0.5')
 lua << EOF
     local on_attach = function(client, bufnr)
         local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -175,36 +158,6 @@ lua << EOF
       vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
     end
 EOF
-else
-    function! s:on_lsp_buffer_enabled() abort
-        setlocal omnifunc=lsp#complete
-        setlocal signcolumn=yes
-        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-        nmap <buffer> gd <plug>(lsp-definition)
-        nmap <buffer> gs <plug>(lsp-document-symbol-search)
-        nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-        nmap <buffer> gr <plug>(lsp-references)
-        nmap <buffer> gi <plug>(lsp-implementation)
-        nmap <buffer> gt <plug>(lsp-type-definition)
-        nmap <buffer> <leader>rn <plug>(lsp-rename)
-        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-        nmap <buffer> K <plug>(lsp-hover)
-        inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-        inoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-        let g:lsp_format_sync_timeout = 1000
-        autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-        " refer to doc to add more commands
-    endfunction
-
-    augroup lsp_install
-        au!
-        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    augroup END
-endif
 
 if exists('g:plugs["telescope.nvim"]')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -213,33 +166,32 @@ if exists('g:plugs["telescope.nvim"]')
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
 
-if has('nvim-0.5')
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-    " Expand
-    imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-    smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 
-    " Expand or jump
-    imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-    smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
-    " Jump forward or backward
-    imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-    smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-    imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-    smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-    " Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-    " See https://github.com/hrsh7th/vim-vsnip/pull/50
-    nmap        s   <Plug>(vsnip-select-text)
-    xmap        s   <Plug>(vsnip-select-text)
-    nmap        S   <Plug>(vsnip-cut-text)
-    xmap        S   <Plug>(vsnip-cut-text)
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
 
-    nmap <buffer> <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
-    tnoremap <ESC><ESC> <C-\><C-N>
+nmap <buffer> <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
+tnoremap <ESC><ESC> <C-\><C-N>
 " neorg configuration
 lua << EOF
     require('neorg').setup {
@@ -274,4 +226,3 @@ lua << EOF
       }
     }
 EOF
-endif
