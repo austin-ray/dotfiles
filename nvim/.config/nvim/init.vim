@@ -43,7 +43,12 @@ call plug#begin()
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
+
+    Plug 'easymotion/vim-easymotion'
 call plug#end()
+
+let g:EasyMotion_do_mapping = 0
+nmap f <Plug>(easymotion-overwin-f)
 
 "########################### Base Vim configuration ##########################
 
