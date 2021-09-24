@@ -190,7 +190,7 @@ xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 
-nmap <buffer> <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
+nmap <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
 tnoremap <ESC><ESC> <C-\><C-N>
 " neorg configuration
 lua << EOF
