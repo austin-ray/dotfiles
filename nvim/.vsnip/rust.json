@@ -1,0 +1,49 @@
+{
+    "test": {
+        "prefix": "test",
+        "body": [
+            "#[test]",
+            "fn $1() {",
+            "   $2",
+            "}"
+        ]
+    },
+   "unit_tests": {
+        "prefix": "tests",
+        "body": [
+            "#[cfg(test)]",
+            "mod tests {",
+            "    use super::*;",
+            "",
+            "    #[test]",
+            "    fn test() {}",
+            "}"
+        ]
+   },
+   "dprint": {
+        "prefix": "dprintln",
+        "body": [
+            "println!(\"${name:default}: {:?}\", ${name:default});"
+        ],
+        "description": "Debug print module"
+   },
+   "leetcode_problem": {
+        "description": "LeetCode problem template",
+        "prefix": "leetcode_prob",
+        "body": [
+            "// Problem link: https://leetcode.com/problems/$1",
+            "#[allow(dead_code)]",
+            "fn ${2:name}(${3:arg}: ${4:ArgType}) -> ${5:ReturnType} {",
+            "   $6",
+            "}",
+            "",
+            "#[cfg(test)]",
+            "mod tests {",
+            "    use super::*;",
+            "",
+            "    #[test]",
+            "    fn test() {}",
+            "}"
+        ]
+   }
+}
