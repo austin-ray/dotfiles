@@ -18,7 +18,6 @@ update_kernel() {
     esac
   done
   genkernel --menuconfig --makeopts="-j17" --zfs --compress-initramfs-type=zstd all
-  emerge @module-rebuild
   eclean-kernel -n 3
   grub-mkconfig -o /boot/grub/grub.cfg
 }
