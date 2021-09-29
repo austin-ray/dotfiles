@@ -22,3 +22,5 @@
 	smtpserverport = 587
 [core]
 	pager = diff-highlight | less
+[diff]
+	tool = nvimdiff
