@@ -166,10 +166,8 @@ bindsym XF86AudioMute exec pulsemixer --mute
 
 
 # i3-gaps
-client.focused #6699cc #FF0000 #FFFFFF #6699cc #6699cc
 new_window pixel
-for_window [class="^.*"] border pixel 0
-gaps inner 10
+for_window [class="^.*"] border pixel 1
 
 # Autostart these programs
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
