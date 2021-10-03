@@ -45,6 +45,9 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'
 
     Plug 'easymotion/vim-easymotion'
+
+    Plug 'pwntester/octo.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 let g:EasyMotion_do_mapping = 0
