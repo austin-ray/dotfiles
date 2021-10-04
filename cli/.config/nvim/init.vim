@@ -108,6 +108,7 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
 " Writegood Configuration
 autocmd Filetype gitcommit,mail  WritegoodEnable
+autocmd Filetype gitcommit,mail  set spell
 
 " LSP configurations
 " Override default Vim with sensible LSP verisons.
