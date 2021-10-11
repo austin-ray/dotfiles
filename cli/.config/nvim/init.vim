@@ -229,7 +229,7 @@ lua << EOF
     }
 
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust"},
+      ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust", "go"},
       highlight = {
         enable = true,
       }
