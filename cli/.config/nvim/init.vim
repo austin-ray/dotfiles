@@ -51,6 +51,8 @@ call plug#begin()
 
     Plug 'pwntester/octo.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
+
+    Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 let g:EasyMotion_do_mapping = 0
@@ -112,6 +114,7 @@ EOF
 " Writegood Configuration
 autocmd Filetype gitcommit,mail  WritegoodEnable
 autocmd Filetype gitcommit,mail  set spell
+autocmd Filetype java let b:AutoPairs = AutoPairsDefine({"<":">"})
 
 " LSP configurations
 " Override default Vim with sensible LSP verisons.
