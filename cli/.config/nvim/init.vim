@@ -78,7 +78,7 @@ colorscheme base16-eighties
 
 "######################## Plugin-related configuration #######################
 
-" Deoplete configuration
+" Completion configuration
 set completeopt=menuone,noselect
 lua <<EOF
   -- Setup nvim-cmp.
