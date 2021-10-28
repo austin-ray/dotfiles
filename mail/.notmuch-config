@@ -2,7 +2,8 @@
 #
 # For more information about notmuch, see https://notmuchmail.org
 [database]
-path=/home/aray/mail
+path=/home/aray/.local/share/notmuch
+mail_root=/home/aray/mail
 
 [user]
 name=Austin Ray
