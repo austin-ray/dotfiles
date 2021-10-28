@@ -37,7 +37,6 @@ unset record
 set sidebar_visible = yes
 set sidebar_width   = 24
 set sidebar_format = "%D%* %N/%F/%S"
-#set sidebar_format = "%B%> (%Nn %Ff %S)"
 set mail_check_stats
 color sidebar_unread color221 color233
 
@@ -110,7 +109,7 @@ bind attach <return> view-mailcap
 
 # Compose View Options -------------------------------
 set realname = "Austin Ray"          # who am i?
-set use_envelope_from                    # which from?
+set use_envelope_from                # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers                     # show headers when composing
 set fast_reply                       # skip to compose when replying
@@ -133,7 +132,6 @@ macro pager,index \cO "<sidebar-toggle-visible>" "Open Sidebar"
 
 set   sendmail_wait = 0
 
-#set virtual_spoolfile=yes
 source ~/.config/neomutt/mailboxes
 
 set from      = "austin@austinray.io"
