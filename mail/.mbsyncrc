@@ -42,11 +42,19 @@ Create            Both
 Expunge           Both
 SyncState         *
 
+Channel           austin@austinray.io-drafts
+Master            :austin@austinray.io-remote:"[Gmail]/Drafts"
+Slave             :austin@austinray.io-local:drafts
+Create            Both
+Expunge           Both
+SyncState         *
+
 Group             austin@austinray.io
 Channel           austin@austinray.io-inbox
 Channel           austin@austinray.io-sent
 Channel           austin@austinray.io-archive
 Channel           austin@austinray.io-spam
+Channel           austin@austinray.io-drafts
 
 
 IMAPAccount       austinray1995@gmail.com-account
