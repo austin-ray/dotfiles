@@ -9,3 +9,5 @@ nmap gi :action GotoImplementation<CR>
 nmap gt :action GotoTypeDeclaration<CR>
 nmap [g :action GotoPreviousError<CR>
 nmap ]g :action GotoNextError<CR>
+
+nmap <leader>a :action ShowIntentionActions<CR>
