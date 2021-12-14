@@ -14,37 +14,37 @@ Path              ~/mail/austin@austinray.io/
 Inbox             ~/mail/austin@austinray.io/INBOX
 
 Channel           austin@austinray.io-inbox
-Master            :austin@austinray.io-remote:
-Slave             :austin@austinray.io-local:
+Far               :austin@austinray.io-remote:
+Near              :austin@austinray.io-local:
 Patterns          "INBOX"
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin@austinray.io-sent
-Master            :austin@austinray.io-remote:"[Gmail]/Sent Mail"
-Slave             :austin@austinray.io-local:sent
+Far               :austin@austinray.io-remote:"[Gmail]/Sent Mail"
+Near              :austin@austinray.io-local:sent
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin@austinray.io-archive
-Master            :austin@austinray.io-remote:"[Gmail]/All Mail"
-Slave             :austin@austinray.io-local:archive
+Far               :austin@austinray.io-remote:"[Gmail]/All Mail"
+Near              :austin@austinray.io-local:archive
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin@austinray.io-spam
-Master            :austin@austinray.io-remote:"[Gmail]/Spam"
-Slave             :austin@austinray.io-local:spam
+Far               :austin@austinray.io-remote:"[Gmail]/Spam"
+Near              :austin@austinray.io-local:spam
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin@austinray.io-drafts
-Master            :austin@austinray.io-remote:"[Gmail]/Drafts"
-Slave             :austin@austinray.io-local:drafts
+Far               :austin@austinray.io-remote:"[Gmail]/Drafts"
+Near              :austin@austinray.io-local:drafts
 Create            Both
 Expunge           Both
 SyncState         *
@@ -73,30 +73,30 @@ Path              ~/mail/austinray1995@gmail.com/
 Inbox             ~/mail/austinray1995@gmail.com/INBOX
 
 Channel           austinray1995@gmail.com-inbox
-Master            :austinray1995@gmail.com-remote:
-Slave             :austinray1995@gmail.com-local:
+Far               :austinray1995@gmail.com-remote:
+Near              :austinray1995@gmail.com-local:
 Patterns          "INBOX"
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austinray1995@gmail.com-sent
-Master            :austinray1995@gmail.com-remote:"[Gmail]/Sent Mail"
-Slave             :austinray1995@gmail.com-local:sent
+Far               :austinray1995@gmail.com-remote:"[Gmail]/Sent Mail"
+Near              :austinray1995@gmail.com-local:sent
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austinray1995@gmail.com-archive
-Master            :austinray1995@gmail.com-remote:"[Gmail]/All Mail"
-Slave             :austinray1995@gmail.com-local:archive
+Far               :austinray1995@gmail.com-remote:"[Gmail]/All Mail"
+Near              :austinray1995@gmail.com-local:archive
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austinray1995@gmail.com-spam
-Master            :austinray1995@gmail.com-remote:"[Gmail]/Spam"
-Slave             :austinray1995@gmail.com-local:spam
+Far               :austinray1995@gmail.com-remote:"[Gmail]/Spam"
+Near              :austinray1995@gmail.com-local:spam
 Create            Both
 Expunge           Both
 SyncState         *
@@ -124,30 +124,30 @@ Path              ~/mail/austin.duke.ray@gmail.com/
 Inbox             ~/mail/austin.duke.ray@gmail.com/INBOX
 
 Channel           austin.duke.ray@gmail.com-inbox
-Master            :austin.duke.ray@gmail.com-remote:
-Slave             :austin.duke.ray@gmail.com-local:
+Far               :austin.duke.ray@gmail.com-remote:
+Near              :austin.duke.ray@gmail.com-local:
 Patterns          "INBOX"
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin.duke.ray@gmail.com-sent
-Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/Sent Mail"
-Slave             :austin.duke.ray@gmail.com-local:sent
+Far               :austin.duke.ray@gmail.com-remote:"[Gmail]/Sent Mail"
+Near              :austin.duke.ray@gmail.com-local:sent
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin.duke.ray@gmail.com-archive
-Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/All Mail"
-Slave             :austin.duke.ray@gmail.com-local:archive
+Far               :austin.duke.ray@gmail.com-remote:"[Gmail]/All Mail"
+Near              :austin.duke.ray@gmail.com-local:archive
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           austin.duke.ray@gmail.com-spam
-Master            :austin.duke.ray@gmail.com-remote:"[Gmail]/Spam"
-Slave             :austin.duke.ray@gmail.com-local:spam
+Far               :austin.duke.ray@gmail.com-remote:"[Gmail]/Spam"
+Near              :austin.duke.ray@gmail.com-local:spam
 Create            Both
 Expunge           Both
 SyncState         *
@@ -175,30 +175,30 @@ Path              ~/mail/rangebro99@gmail.com/
 Inbox             ~/mail/rangebro99@gmail.com/INBOX
 
 Channel           rangebro99@gmail.com-inbox
-Master            :rangebro99@gmail.com-remote:
-Slave             :rangebro99@gmail.com-local:
+Far               :rangebro99@gmail.com-remote:
+Near              :rangebro99@gmail.com-local:
 Patterns          "INBOX"
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           rangebro99@gmail.com-sent
-Master            :rangebro99@gmail.com-remote:"[Gmail]/Sent Mail"
-Slave             :rangebro99@gmail.com-local:sent
+Far               :rangebro99@gmail.com-remote:"[Gmail]/Sent Mail"
+Near              :rangebro99@gmail.com-local:sent
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           rangebro99@gmail.com-archive
-Master            :rangebro99@gmail.com-remote:"[Gmail]/All Mail"
-Slave             :rangebro99@gmail.com-local:archive
+Far               :rangebro99@gmail.com-remote:"[Gmail]/All Mail"
+Near              :rangebro99@gmail.com-local:archive
 Create            Both
 Expunge           Both
 SyncState         *
 
 Channel           rangebro99@gmail.com-spam
-Master            :rangebro99@gmail.com-remote:"[Gmail]/Spam"
-Slave             :rangebro99@gmail.com-local:spam
+Far               :rangebro99@gmail.com-remote:"[Gmail]/Spam"
+Near              :rangebro99@gmail.com-local:spam
 Create            Both
 Expunge           Both
 SyncState         *
@@ -225,23 +225,23 @@ Channel           rangebro99@gmail.com-spam
 #Inbox             ~/mail/adr1396@uncw.edu/INBOX
 #
 #Channel           adr1396@uncw.edu-inbox
-#Master            :adr1396@uncw.edu-remote:
-#Slave             :adr1396@uncw.edu-local:
+#Far               :adr1396@uncw.edu-remote:
+#Near              :adr1396@uncw.edu-local:
 #Patterns          "INBOX"
 #Create            Both
 #Expunge           Both
 #SyncState         *
 #
 #Channel           adr1396@uncw.edu-sent
-#Master            :adr1396@uncw.edu-remote:"Sent Items"
-#Slave             :adr1396@uncw.edu-local:sent
+#Far               :adr1396@uncw.edu-remote:"Sent Items"
+#Near              :adr1396@uncw.edu-local:sent
 #Create            Both
 #Expunge           Both
 #SyncState         *
 #
 #Channel           adr1396@uncw.edu-spam
-#Master            :adr1396@uncw.edu-remote:"Spam"
-#Slave             :adr1396@uncw.edu-local:spam
+#Far               :adr1396@uncw.edu-remote:"Spam"
+#Near              :adr1396@uncw.edu-local:spam
 #Create            Both
 #Expunge           Both
 #SyncState         *
