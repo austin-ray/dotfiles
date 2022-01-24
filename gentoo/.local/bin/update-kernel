@@ -17,7 +17,7 @@ update_kernel() {
         ;;
     esac
   done
-  genkernel --menuconfig --makeopts="-j17" --zfs --compress-initramfs-type=zstd all
+  genkernel --menuconfig --makeopts="-j14" --zfs --compress-initramfs-type=zstd all
   eclean-kernel -n 3
   grub-mkconfig -o /boot/grub/grub.cfg
 }
