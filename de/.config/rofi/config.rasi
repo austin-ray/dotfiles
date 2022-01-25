@@ -1,3 +1,8 @@
+configuration {
+    combi-modi: "drun,window,ssh";
+    combi-hide-mode-prefix: true;
+    terminal: "alacritty";
+}
 /**
  * rofi -dump-theme output.
  * Rofi version: 1.6.1
