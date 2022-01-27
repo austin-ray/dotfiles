@@ -76,6 +76,9 @@ set softtabstop=4
 set termguicolors
 colorscheme base16-eighties
 
+" Keep UI from shifting by always showing the signcolumn
+set signcolumn="yes"
+
 "######################## Plugin-related configuration #######################
 
 " Writegood Configuration
@@ -84,7 +87,7 @@ autocmd Filetype gitcommit,mail  set spell
 autocmd Filetype java let b:AutoPairs = AutoPairsDefine({"<":">"})
 
 " Completion configuration
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 
 if exists('g:plugs["telescope.nvim"]')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
