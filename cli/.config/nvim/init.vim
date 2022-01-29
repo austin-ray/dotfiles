@@ -77,7 +77,7 @@ set termguicolors
 colorscheme base16-eighties
 
 " Keep UI from shifting by always showing the signcolumn
-set signcolumn="yes"
+set signcolumn=yes
 
 "######################## Plugin-related configuration #######################
 
