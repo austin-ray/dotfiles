@@ -188,6 +188,7 @@ client.background       $base07
 bar {
     status_command i3status
     tray_output primary
+    position top
 
     ## Base16 Eighties
     # Author: Chris Kempson (http://chriskempson.com)
