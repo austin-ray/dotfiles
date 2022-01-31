@@ -55,9 +55,6 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-let g:EasyMotion_do_mapping = 0
-nmap f <Plug>(easymotion-overwin-f)
-
 "########################### Base Vim configuration ##########################
 
 " Space is more convenient than \
@@ -79,7 +76,13 @@ colorscheme base16-eighties
 " Keep UI from shifting by always showing the signcolumn
 set signcolumn=yes
 
+nmap <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
+tnoremap <ESC><ESC> <C-\><C-N>
+
 "######################## Plugin-related configuration #######################
+
+let g:EasyMotion_do_mapping = 0
+nmap f <Plug>(easymotion-overwin-f)
 
 " Writegood Configuration
 autocmd Filetype gitcommit,mail  WritegoodEnable
@@ -119,9 +122,6 @@ nmap        s   <Plug>(vsnip-select-text)
 xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
-
-nmap <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
-tnoremap <ESC><ESC> <C-\><C-N>
 
 lua <<EOF
   -- Setup nvim-cmp.
