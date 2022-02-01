@@ -50,6 +50,7 @@ call plug#begin()
     Plug 'easymotion/vim-easymotion'
 
     Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'folke/trouble.nvim'
 
     Plug 'jiangmiao/auto-pairs'
 call plug#end()
@@ -237,5 +238,10 @@ lua <<EOF
       highlight = {
         enable = true,
       }
+    }
+
+    require('trouble').setup {
+        auto_open = true,
+        auto_close = true,
     }
 EOF
