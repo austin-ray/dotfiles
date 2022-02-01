@@ -49,10 +49,14 @@ call plug#begin()
 
     Plug 'easymotion/vim-easymotion'
 
+    Plug 'jiangmiao/auto-pairs'
+
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'folke/trouble.nvim'
 
-    Plug 'jiangmiao/auto-pairs'
+    if !empty(glob("~/.config/nvim/private-plugins.vim"))
+        source "~/.config/nvim/private-plugins.vim"
+    endif
 call plug#end()
 
 "########################### Base Vim configuration ##########################
