@@ -49,7 +49,6 @@ call plug#begin()
 
     Plug 'easymotion/vim-easymotion'
 
-    Plug 'pwntester/octo.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'jiangmiao/auto-pairs'
