@@ -55,7 +55,7 @@ call plug#begin()
     Plug 'folke/trouble.nvim'
 
     if !empty(glob("~/.config/nvim/private-plugins.vim"))
-        source "~/.config/nvim/private-plugins.vim"
+        source ~/.config/nvim/private-plugins.vim
     endif
 call plug#end()
 
