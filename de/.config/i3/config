@@ -206,6 +206,8 @@ bar {
     }
 }
 
+mouse_warping none
+
 bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
 bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
 bindsym XF86AudioMute exec pulsemixer --mute
