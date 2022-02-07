@@ -229,3 +229,5 @@ exec feh --bg-fill /home/aray/pictures/wallpapers/Toronto-KingSt-Datacenter-1.jp
 exec ibus-daemon -drx
 exec solaar --window=hide &
 exec xrandr --output HDMI-0 --primary
+
+workspace 10 output DP-0
