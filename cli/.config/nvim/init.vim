@@ -45,7 +45,7 @@ call plug#begin()
     Plug 'vhyrro/neorg'
 
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    Plug 'mhinz/vim-signify'
 
     Plug 'easymotion/vim-easymotion'
 
