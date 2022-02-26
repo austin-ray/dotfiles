@@ -54,6 +54,9 @@ call plug#begin()
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'folke/trouble.nvim'
 
+    " For easily wrapping selections with characters
+    Plug 'tpope/vim-surround'
+
     if !empty(glob("~/.config/nvim/private-plugins.vim"))
         source ~/.config/nvim/private-plugins.vim
     endif
