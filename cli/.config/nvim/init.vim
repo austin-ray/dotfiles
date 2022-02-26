@@ -57,6 +57,9 @@ call plug#begin()
     " For easily wrapping selections with characters
     Plug 'tpope/vim-surround'
 
+    " Have a start screen with easy jumping to recent files
+    Plug 'mhinz/vim-startify'
+
     if !empty(glob("~/.config/nvim/private-plugins.vim"))
         source ~/.config/nvim/private-plugins.vim
     endif
