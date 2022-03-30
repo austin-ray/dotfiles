@@ -89,6 +89,11 @@ set signcolumn=yes
 nmap <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
 tnoremap <ESC><ESC> <C-\><C-N>
 
+" Delegate folding to treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=99
+
 "######################## Plugin-related configuration #######################
 
 let g:EasyMotion_do_mapping = 0
@@ -132,6 +137,7 @@ nmap        s   <Plug>(vsnip-select-text)
 xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
+
 
 lua <<EOF
   -- Setup nvim-cmp.
