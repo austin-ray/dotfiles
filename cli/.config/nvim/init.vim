@@ -258,6 +258,18 @@ lua <<EOF
       }
     }
 
+    require('telescope').setup {
+        pickers = {
+            buffers = {
+                mappings = {
+                    i = {
+                        ["<C-d>"] = "delete_buffer",
+                    }
+                }   
+            }
+        }
+    }
+
     require('trouble').setup {
         auto_open = true,
         auto_close = true,
