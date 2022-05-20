@@ -267,7 +267,13 @@ lua <<EOF
                     }
                 }   
             }
-        }
+        },
+        defaults = {
+            i = {
+                ["<C-Down>"] = require('telescope.actions').cycle_history_next,
+                ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+            },
+        },
     }
 
     require('trouble').setup {
