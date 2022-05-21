@@ -199,7 +199,11 @@ lua <<EOF
         buf_set_keymap('n', '<leader>a', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         buf_set_keymap('v', '<leader>a', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
-        vim.api.nvim_command[[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync{timeout_ms=100}]]
+
+        vim.api.nvim_command("augroup LSP")
+        vim.api.nvim_command("autocmd!")
+        vim.api.nvim_command("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync{timeout_ms=50}")
+        vim.api.nvim_command("augroup END")
     end
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
