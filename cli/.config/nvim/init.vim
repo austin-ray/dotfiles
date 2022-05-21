@@ -203,7 +203,19 @@ lua <<EOF
         vim.api.nvim_command("augroup LSP")
         vim.api.nvim_command("autocmd!")
         vim.api.nvim_command("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync{timeout_ms=50}")
+        if client.resolved_capabilities.document_highlight then
+            vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
+            vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
+            vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
+        end
         vim.api.nvim_command("augroup END")
+
+        -- Define highlight groups for document highlights
+        vim.api.nvim_command([[
+            highlight link LspReferenceText  Visual
+            highlight link LspReferenceRead  Visual
+            highlight link LspReferenceWrite Visual
+        ]])
     end
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
