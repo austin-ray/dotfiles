@@ -99,6 +99,9 @@ nnoremap <silent> <C-j> :wincmd j<CR>
 nnoremap <silent> <C-k> :wincmd k<CR>
 nnoremap <silent> <C-l> :wincmd l<CR>
 
+set scrolloff=1
+set sidescrolloff=5
+
 "######################## Plugin-related configuration #######################
 
 let g:EasyMotion_do_mapping = 0
