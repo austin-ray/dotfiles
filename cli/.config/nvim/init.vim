@@ -113,10 +113,11 @@ autocmd Filetype java let b:AutoPairs = AutoPairsDefine({"<":">"})
 set completeopt=menu,menuone,noselect
 
 if exists('g:plugs["telescope.nvim"]')
-    nnoremap <leader>ff <cmd>Telescope find_files<cr>
-    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+    nnoremap <leader>ff  <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg  <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb  <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh  <cmd>Telescope help_tags<cr>
+    nnoremap <leader>ftr <cmd>Telescope resume<cr>
 endif
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
