@@ -292,8 +292,8 @@ lua <<EOF
         defaults = {
             mappings = {
                 i = {
-                    ["<C-Down>"] = require('telescope.actions').cycle_history_next,
-                    ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+                    ["<C-j>"] = require('telescope.actions').cycle_history_next,
+                    ["<C-k>"] = require('telescope.actions').cycle_history_prev,
                 },
             },
         },
