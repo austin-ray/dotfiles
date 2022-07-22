@@ -237,6 +237,8 @@ local function setup_servers()
 	end)
 end
 
+setup_servers()
+
 -- neorg configuration
 require("neorg").setup({
 	-- Tell Neorg what modules to load
