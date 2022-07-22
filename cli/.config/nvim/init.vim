@@ -29,8 +29,8 @@ call plug#begin()
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'rafamadriz/friendly-snippets'
 
     " Telescope for file navigation
@@ -124,15 +124,6 @@ if exists('g:plugs["telescope.nvim"]')
     nnoremap <leader>ftr <cmd>Telescope resume<cr>
 endif
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Expand or jump
-imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>'
-smap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>'
-imap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
 lua <<EOF
 -- Setup nvim-cmp.
 local cmp = require("cmp")
@@ -140,8 +131,7 @@ local cmp = require("cmp")
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			-- For `vsnip` user.
-			vim.fn["vsnip#anonymous"](args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 	mapping = {
@@ -161,7 +151,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "vsnip" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 	},
 })
@@ -238,6 +228,33 @@ local function setup_servers()
 end
 
 setup_servers()
+
+-- Setup luasnip
+local luasnip = require("luasnip")
+local luasnip_types = require("luasnip.util.types")
+
+-- Load friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
+luasnip.config.set_config({
+	history = true,
+	updateevents = "TextChanged,TextChangedI",
+	enable_autosnippets = true,
+})
+
+-- Expand snippet or jump to next snippet node.
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand_or_jump()
+	end
+end, { silent = true })
+
+-- Jump to previous snippet node.
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
+	if luasnip.jumpable(-1) then
+		luasnip.jump(-1)
+	end
+end, { silent = true })
 
 -- neorg configuration
 require("neorg").setup({
