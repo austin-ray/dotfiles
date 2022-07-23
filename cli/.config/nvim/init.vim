@@ -115,15 +115,6 @@ autocmd Filetype java let b:AutoPairs = AutoPairsDefine({"<":">"})
 " Completion configuration
 set completeopt=menu,menuone,noselect
 
-if exists('g:plugs["telescope.nvim"]')
-    nnoremap <leader>ff  <cmd>Telescope find_files<cr>
-    nnoremap <leader>fgg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>fgo <cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>
-    nnoremap <leader>fb  <cmd>Telescope buffers<cr>
-    nnoremap <leader>fh  <cmd>Telescope help_tags<cr>
-    nnoremap <leader>ftr <cmd>Telescope resume<cr>
-endif
-
 lua <<EOF
 -- Setup nvim-cmp.
 local cmp = require("cmp")
@@ -152,7 +143,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "buffer" },
+		{ name = "buffer", keyword_length = 5 },
 	},
 })
 
@@ -290,6 +281,7 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+-- Telescope configuration
 require("telescope").setup({
 	pickers = {
 		buffers = {
@@ -310,6 +302,16 @@ require("telescope").setup({
 	},
 })
 
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>fgg", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>fgo", function()
+    require('telescope.builtin').live_grep({grep_open_files = true})
+end)
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>ftr", "<cmd>Telescope resume<cr>")
+
+-- Trouble configuration
 require("trouble").setup({
 	auto_open = true,
 	auto_close = true,
