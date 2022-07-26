@@ -83,6 +83,11 @@ require("packer").startup(function(use)
     -- Have a start screen with easy jumping to recent files
     use "mhinz/vim-startify"
 
+    use {
+        "numToStr/Comment.nvim",
+        config = function() require("Comment").setup() end
+    }
+
     if packer_bootstrap then
         require("packer").sync()
     end
