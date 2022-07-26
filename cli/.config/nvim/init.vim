@@ -65,43 +65,49 @@ call plug#begin()
     endif
 call plug#end()
 
-"########################### Base Vim configuration ##########################
-
-" Space is more convenient than \
-let mapleader=" "
-
-" Line numbers
-set number
-set relativenumber
-
-" Tab to spaces
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-
-" Enable 24-bit color allowing color scheme to work without visual errors.
-set termguicolors
-colorscheme base16-eighties
-
-" Keep UI from shifting by always showing the signcolumn
-set signcolumn=yes
-
-nmap <leader>tt <Cmd>bot 24split +terminal<CR><Cmd>set noea<CR>
-tnoremap <ESC><ESC> <C-\><C-N>
-
-" Delegate folding to treesitter
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=99
-
-nnoremap <silent> <C-h> :wincmd h<CR>
-nnoremap <silent> <C-j> :wincmd j<CR>
-nnoremap <silent> <C-k> :wincmd k<CR>
-nnoremap <silent> <C-l> :wincmd l<CR>
-
-set scrolloff=1
-set sidescrolloff=5
 lua <<EOF
+-- ########################### Base Vim configuration ##########################
+
+-- Space is more convenient than \
+vim.g.mapleader = " "
+
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Tab to spaces
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
+-- Enable 24-bit color allowing color scheme to work without visual errors.
+vim.opt.termguicolors = true
+-- TODO: Convert this to Lua when API comes out.
+vim.cmd("colorscheme base16-eighties")
+
+-- Keep UI from shifting by always showing the signcolumn
+vim.opt.signcolumn = "yes"
+
+vim.keymap.set("n", "<leader>tt", function()
+    -- TODO: Convert this to Lua code.
+    vim.api.nvim_command('botright 24split +terminal')
+    -- vim.go.equalalwaytrues = false
+end)
+vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
+
+-- Delegate folding to treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
+
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+
+vim.opt.scrolloff = 1
+vim.opt.sidescrolloff = 5
+
 -- ######################## Plugin-related configuration #######################
 
 
