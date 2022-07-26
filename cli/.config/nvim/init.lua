@@ -68,7 +68,11 @@ require("packer").startup(function(use)
     use "tpope/vim-fugitive"
     use "mhinz/vim-signify"
 
-    use "easymotion/vim-easymotion"
+    use {
+        "phaazon/hop.nvim",
+        branch = "v2",
+        config = function() require("hop").setup() end
+    }
 
     use "jiangmiao/auto-pairs"
 
@@ -156,9 +160,8 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
     end
 })
 
--- EasyMotion configuration
-vim.b.Easymotion_do_mapping = 0
-vim.keymap.set('n', 'f', '<Plug>(easymotion-overwin-f)')
+-- Hop configuration
+vim.keymap.set("n", "f", function() require("hop").hint_char1() end)
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
