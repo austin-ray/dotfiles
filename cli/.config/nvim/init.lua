@@ -251,6 +251,20 @@ local function setup_servers()
         -- if server.name == "tsserver" then
         --     opts.root_dir = function() ... end
         -- end
+        if server.name == "sumneko_lua" then
+            opts.settings = {
+                Lua = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    runtime = { version = 'LuaJIT', },
+                    -- Get the language server to recognize the `vim` global
+                    diagnostics = { globals = { 'vim' }, },
+                    -- Make the server aware of Neovim runtime files
+                    workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+                    -- Do not send telemetry data containing a randomized but unique identifier
+                    telemetry = { enable = false, },
+                },
+            }
+        end
 
         -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
         server:setup(opts)
