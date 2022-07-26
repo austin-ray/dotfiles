@@ -1,71 +1,93 @@
-"############################## Plugins ##################################
-
-" Automatically install vim-plug plugin manager.
-let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
-if !filereadable(autoload_plug_path)
-  silent execute '!curl -fLo ' . autoload_plug_path . ' --create-dirs
-    \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-unlet autoload_plug_path
-
-call plug#begin()
-    Plug 'davidbeckingsale/writegood.vim'
-
-    " Colorschemes
-    Plug 'chriskempson/base16-vim'
-
-    " Automatically respect project-specific formatting.
-    Plug 'editorconfig/editorconfig-vim'
-
-    " Enable syntax highlighting for hundreds of file formats.
-    Plug 'sheerun/vim-polyglot'
-
-    " Enable LSP for better development experience.
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer' " Helper to install LSP servers.
-
-    " LSP works better with a completion engine.
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'rafamadriz/friendly-snippets'
-
-    " Telescope for file navigation
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-
-    " Treesitter required for Neorg
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-    " Neorg for an org-mode experience
-    Plug 'vhyrro/neorg'
-
-    Plug 'tpope/vim-fugitive'
-    Plug 'mhinz/vim-signify'
-
-    Plug 'easymotion/vim-easymotion'
-
-    Plug 'jiangmiao/auto-pairs'
-
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'folke/trouble.nvim'
-
-    " For easily wrapping selections with characters
-    Plug 'tpope/vim-surround'
-
-    " Have a start screen with easy jumping to recent files
-    Plug 'mhinz/vim-startify'
-
-    if !empty(glob("~/.config/nvim/private-plugins.vim"))
-        source ~/.config/nvim/private-plugins.vim
-    endif
-call plug#end()
-
 lua <<EOF
+-- ############################## Plugins ##################################
+
+-- Automatically install the packer plugin manager.
+local install_path = vim.fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    packer_bootstrap = vim.fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+end
+
+require("packer").startup(function(use)
+    -- Plugin manager
+    use "wbthomason/packer.nvim"
+
+    -- Grammar checker
+    use "davidbeckingsale/writegood.vim"
+
+    -- Colorschemes
+    use "chriskempson/base16-vim"
+
+    -- Automatically respect project-specific formatting.
+    use "editorconfig/editorconfig-vim"
+
+    -- Enable syntax highlighting for hundreds of file formats.
+    use "sheerun/vim-polyglot"
+
+    -- Enable LSP for better development experience.
+    use {
+        "neovim/nvim-lspconfig",
+        -- Helper to install LSP servers.
+        "williamboman/nvim-lsp-installer",
+    }
+
+    -- LSP works better with a completion engine.
+    use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-nvim-lsp",
+        }
+    }
+
+    use {
+        "L3MON4D3/LuaSnip",
+        requires = {
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+        }
+    }
+
+    -- Telescope for file navigation
+    use "nvim-lua/popup.nvim" -- TODO: Figure out why this is here.
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = { "nvim-lua/plenary.nvim" }
+    }
+
+    -- Treesitter required for Neorg
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end
+    }
+
+    -- Neorg for an org-mode experience
+    use "vhyrro/neorg"
+
+    use "tpope/vim-fugitive"
+    use "mhinz/vim-signify"
+
+    use "easymotion/vim-easymotion"
+
+    use "jiangmiao/auto-pairs"
+
+    use {
+        "folke/trouble.nvim",
+        requires = { "kyazdani42/nvim-web-devicons" }
+    }
+
+    -- For easily wrapping selections with characters
+    use "tpope/vim-surround"
+
+    -- Have a start screen with easy jumping to recent files
+    use "mhinz/vim-startify"
+
+    if packer_bootstrap then
+        require("packer").sync()
+    end
+end)
+
 -- ########################### Base Vim configuration ##########################
 
 -- Space is more convenient than \
@@ -109,9 +131,6 @@ vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 5
 
 -- ######################## Plugin-related configuration #######################
-
-
-
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
