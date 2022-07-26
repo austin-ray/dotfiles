@@ -101,21 +101,35 @@ nnoremap <silent> <C-l> :wincmd l<CR>
 
 set scrolloff=1
 set sidescrolloff=5
-
-"######################## Plugin-related configuration #######################
-
-let g:EasyMotion_do_mapping = 0
-nmap f <Plug>(easymotion-overwin-f)
-
-" Writegood Configuration
-autocmd Filetype gitcommit,mail  WritegoodEnable
-autocmd Filetype gitcommit,mail  set spell
-autocmd Filetype java let b:AutoPairs = AutoPairsDefine({"<":">"})
-
-" Completion configuration
-set completeopt=menu,menuone,noselect
-
 lua <<EOF
+-- ######################## Plugin-related configuration #######################
+
+
+
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+-- Writegood configuration
+vim.api.nvim_create_autocmd({"Filetype"}, {
+    pattern = {"gitcommit", "mail"},
+    callback = function()
+        vim.cmd("WritegoodEnable")
+        vim.wo.spell = true
+    end
+})
+
+-- Autopair configuration
+vim.api.nvim_create_autocmd({"Filetype"}, {
+    pattern = "java",
+    callback = function() 
+        vim.b.AutoPairs = vim.fn.AutoPairsDefine({["<"] = ">"})
+    end
+})
+
+-- EasyMotion configuration
+vim.b.Easymotion_do_mapping = 0
+vim.keymap.set('n', 'f', '<Plug>(easymotion-overwin-f)')
+
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 
