@@ -309,6 +309,12 @@ vim.keymap.set({ "i", "s" }, "<c-k>", function()
     end
 end, { silent = true })
 
+vim.keymap.set("i", "<c-l>", function()
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    end
+end)
+
 -- neorg configuration
 require("neorg").setup({
     -- Tell Neorg what modules to load
