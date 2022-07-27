@@ -27,8 +27,10 @@ require("packer").startup(function(use)
     use {
         "neovim/nvim-lspconfig",
         -- Helper to install LSP servers.
-        "williamboman/nvim-lsp-installer",
+        { "williamboman/mason-lspconfig.nvim", requires = { "williamboman/mason.nvim" } }
     }
+
+
 
     -- LSP works better with a completion engine.
     use {
@@ -244,43 +246,42 @@ end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local function setup_servers()
-    local lsp_installer = require("nvim-lsp-installer")
+require("mason").setup()
+local lspconfig = require("lspconfig")
 
-    lsp_installer.on_server_ready(function(server)
-        local opts = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            flags = {
-                debounce_text_changes = 500,
-            },
-        }
-        -- (optional) Customize the options passed to the server
-        -- if server.name == "tsserver" then
-        --     opts.root_dir = function() ... end
-        -- end
-        if server.name == "sumneko_lua" then
-            opts.settings = {
-                Lua = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    runtime = { version = 'LuaJIT', },
-                    -- Get the language server to recognize the `vim` global
-                    diagnostics = { globals = { 'vim' }, },
-                    -- Make the server aware of Neovim runtime files
-                    workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-                    -- Do not send telemetry data containing a randomized but unique identifier
-                    telemetry = { enable = false, },
-                },
-            }
-        end
+-- Helper to reduce amount of config
+local setup_server = function(server, settings)
+    local opts = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = {
+            debounce_text_changes = 500,
+        },
+    }
 
-        -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-        server:setup(opts)
-        vim.cmd([[ do User LspAttachBuffers ]])
-    end)
+    if settings then
+        opts.settings = settings
+    end
+
+    lspconfig[server].setup(opts)
 end
 
-setup_servers()
+setup_server("hls")
+setup_server("rust_analyzer")
+setup_server("sumneko_lua", {
+    Lua = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        runtime = { version = 'LuaJIT', },
+        -- Get the language server to recognize the `vim` global
+        diagnostics = { globals = { 'vim' }, },
+        -- Make the server aware of Neovim runtime files
+        workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = { enable = false, },
+    },
+})
+
+
 
 -- Setup luasnip
 local luasnip = require("luasnip")
