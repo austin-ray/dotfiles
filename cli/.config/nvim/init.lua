@@ -50,7 +50,6 @@ require("packer").startup(function(use)
     }
 
     -- Telescope for file navigation
-    use "nvim-lua/popup.nvim" -- TODO: Figure out why this is here.
     use {
         "nvim-telescope/telescope.nvim",
         requires = { "nvim-lua/plenary.nvim" }
