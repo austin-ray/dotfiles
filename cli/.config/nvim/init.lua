@@ -3,7 +3,7 @@
 -- Automatically install the packer plugin manager.
 local install_path = vim.fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    packer_bootstrap = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    PACKER_BOOTSTRAP = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
         install_path })
 end
 
@@ -94,7 +94,7 @@ require("packer").startup(function(use)
         config = function() require("Comment").setup() end
     }
 
-    if packer_bootstrap then
+    if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
 end)
@@ -167,6 +167,7 @@ vim.keymap.set("n", "f", function() require("hop").hint_char1() end)
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
+if not cmp then return end
 
 cmp.setup({
     snippet = {
