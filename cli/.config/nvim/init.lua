@@ -100,12 +100,12 @@ end)
 
 -- ########################### Base Vim configuration ##########################
 
+-- Space is more convenient than \
+vim.g.mapleader = " "
+
 -- Quick access to configuration file.
 vim.keymap.set("n", "<leader>ce", "<cmd>e $MYVIMRC<cr>")
 vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
-
--- Space is more convenient than \
-vim.g.mapleader = " "
 
 -- Line numbers
 vim.opt.number = true
