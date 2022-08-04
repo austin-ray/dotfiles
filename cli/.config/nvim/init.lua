@@ -383,6 +383,8 @@ end)
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 vim.keymap.set("n", "<leader>ftr", "<cmd>Telescope resume<cr>")
+vim.keymap.set("n", "<leader>fsw", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
+vim.keymap.set("n", "<leader>fss", "<cmd>Telescope lsp_document_symbols<cr>")
 
 -- Trouble configuration
 require("trouble").setup({
