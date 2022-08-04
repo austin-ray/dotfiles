@@ -270,7 +270,9 @@ local setup_server = function(server, settings)
     lspconfig[server].setup(opts)
 end
 
+setup_server("clangd")
 setup_server("hls")
+setup_server("pylsp")
 setup_server("rust_analyzer")
 setup_server("sumneko_lua", {
     Lua = {
