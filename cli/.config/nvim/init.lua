@@ -202,33 +202,25 @@ cmp.setup({
 
 -- LSP configurations
 -- Override default Vim with sensible LSP verisons.
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+local on_attach = function(client)
+    vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    local function buf_set_opt(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    local opts = { buffer = true, silent = true }
 
-    buf_set_opt("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    local opts = { noremap = true, silent = true }
-
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gs", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
-    buf_set_keymap("n", "gS", "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-    buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "<M-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    buf_set_keymap("n", "<leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap("v", "<leader>a", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+    vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    vim.keymap.set("n", "gs", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
+    vim.keymap.set("n", "gS", "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>", opts)
+    vim.keymap.set("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+    vim.keymap.set("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    vim.keymap.set("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    vim.keymap.set("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    vim.keymap.set("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    vim.keymap.set("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    vim.keymap.set("n", "<M-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.keymap.set("n", "<leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    vim.keymap.set("v", "<leader>a", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
     vim.api.nvim_command("augroup LSP")
     vim.api.nvim_command("autocmd!")
