@@ -365,6 +365,7 @@ require("telescope").setup({
         },
     },
     defaults = {
+        layout_strategy = "vertical",
         mappings = {
             i = {
                 ["<C-j>"] = require("telescope.actions").cycle_history_next,
