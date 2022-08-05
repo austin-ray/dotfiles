@@ -244,40 +244,35 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 require("mason").setup()
 local lspconfig = require("lspconfig")
-
--- Helper to reduce amount of config
-local setup_server = function(server, settings)
-    local opts = {
+lspconfig.util.default_config = vim.tbl_extend(
+    "force",
+    lspconfig.util.default_config,
+    {
         capabilities = capabilities,
         on_attach = on_attach,
         flags = {
             debounce_text_changes = 500,
+        }
+    })
+
+lspconfig.clangd.setup {}
+lspconfig.hls.setup {}
+lspconfig.pylsp.setup {}
+lspconfig.rust_analyzer.setup {}
+lspconfig.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            runtime = { version = 'LuaJIT', },
+            -- Get the language server to recognize the `vim` global
+            diagnostics = { globals = { 'vim' }, },
+            -- Make the server aware of Neovim runtime files
+            workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = { enable = false, },
         },
     }
-
-    if settings then
-        opts.settings = settings
-    end
-
-    lspconfig[server].setup(opts)
-end
-
-setup_server("clangd")
-setup_server("hls")
-setup_server("pylsp")
-setup_server("rust_analyzer")
-setup_server("sumneko_lua", {
-    Lua = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        runtime = { version = 'LuaJIT', },
-        -- Get the language server to recognize the `vim` global
-        diagnostics = { globals = { 'vim' }, },
-        -- Make the server aware of Neovim runtime files
-        workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = { enable = false, },
-    },
-})
+}
 
 
 
