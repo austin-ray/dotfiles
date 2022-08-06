@@ -30,8 +30,6 @@ require("packer").startup(function(use)
         { "williamboman/mason-lspconfig.nvim", requires = { "williamboman/mason.nvim" } }
     }
 
-
-
     -- LSP works better with a completion engine.
     use {
         "hrsh7th/nvim-cmp",
@@ -273,8 +271,6 @@ lspconfig.sumneko_lua.setup {
         },
     }
 }
-
-
 
 -- Setup luasnip
 local luasnip = require("luasnip")
