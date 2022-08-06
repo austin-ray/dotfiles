@@ -86,6 +86,9 @@ require("packer").startup(function(use)
         config = function() require("nvim-surround").setup() end,
     }
 
+    -- Make it easier to access the registers.
+    use "tversteeg/registers.nvim"
+
     -- Have a start screen with easy jumping to recent files
     use "mhinz/vim-startify"
 
