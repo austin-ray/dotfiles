@@ -81,7 +81,10 @@ require("packer").startup(function(use)
     }
 
     -- For easily wrapping selections with characters
-    use "tpope/vim-surround"
+    use {
+        "kylechui/nvim-surround",
+        config = function() require("nvim-surround").setup() end,
+    }
 
     -- Have a start screen with easy jumping to recent files
     use "mhinz/vim-startify"
