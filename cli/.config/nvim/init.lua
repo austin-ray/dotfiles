@@ -73,7 +73,10 @@ require("packer").startup(function(use)
         config = function() require("hop").setup() end
     }
 
-    use "jiangmiao/auto-pairs"
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
     use {
         "folke/trouble.nvim",
