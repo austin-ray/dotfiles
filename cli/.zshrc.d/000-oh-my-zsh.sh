@@ -70,6 +70,10 @@ ZSH_THEME="typewritten"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
 
+# SSH agent config.
+zstyle :omz:plugins:ssh-agent quiet yes
+zstyle :omz:plugins:ssh-agent lazy yes
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
