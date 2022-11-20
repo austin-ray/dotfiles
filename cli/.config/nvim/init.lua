@@ -36,6 +36,7 @@ require("packer").startup(function(use)
         requires = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
         }
     }
 
@@ -202,6 +203,7 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
         { name = "luasnip" },
         { name = "buffer", keyword_length = 5 },
     },
