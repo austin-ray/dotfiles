@@ -205,6 +205,9 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer", keyword_length = 5 },
     },
+    experimental = {
+        ghost_text = true,
+    },
 })
 
 -- LSP configurations
