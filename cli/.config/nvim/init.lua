@@ -207,10 +207,22 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer", keyword_length = 5 },
     },
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
     experimental = {
         ghost_text = true,
     },
 })
+
 
 -- LSP configurations
 -- Override default Vim with sensible LSP verisons.
