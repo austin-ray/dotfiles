@@ -359,7 +359,7 @@ parser_configs.norg = {
 }
 
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust", "go" },
+    ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto" },
     highlight = {
         enable = true,
     },
