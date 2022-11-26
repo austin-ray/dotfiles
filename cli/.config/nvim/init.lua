@@ -282,6 +282,7 @@ lspconfig.util.default_config = vim.tbl_extend(
 lspconfig.clangd.setup {}
 lspconfig.hls.setup {}
 lspconfig.pylsp.setup {}
+lspconfig.rnix.setup {}
 lspconfig.rust_analyzer.setup {}
 lspconfig.sumneko_lua.setup {
     settings = {
