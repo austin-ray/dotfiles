@@ -1,3 +1,3 @@
 #!/bin/sh
 EMERGE_OPTS="--ask --update --deep --changed-use"
-sudo eix-sync && sudo emerge $EMERGE_OPTS @world
+sudo eix-sync && sudo emerge $EMERGE_OPTS @world @preserved-rebuild @smart-live-rebuild
