@@ -229,6 +229,8 @@ bindsym $meta+$ctrl+l exec loginctl lock-session
 exec feh --bg-fill /home/aray/pictures/wallpapers/Toronto-KingSt-Datacenter-1.jpg &
 exec ibus-daemon -drx
 exec solaar --window=hide &
+
 exec xrandr --output HDMI-0 --primary
+exec xrandr --output DP-0 --left-of HDMI-0 --rotate left
 
 workspace 10 output DP-0
