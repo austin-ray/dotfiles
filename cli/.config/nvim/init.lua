@@ -268,7 +268,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup()
 local lspconfig = require("lspconfig")
-lspconfig.util.default_config = vim.tbl_extend(
+lspconfig.util.default_config = vim.tbl_deep_extend(
     "force",
     lspconfig.util.default_config,
     {
