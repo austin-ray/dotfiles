@@ -248,7 +248,7 @@ local on_attach = function(client)
 
     vim.api.nvim_command("augroup LSP")
     vim.api.nvim_command("autocmd!")
-    vim.api.nvim_command("autocmd BufWritePre * lua vim.lsp.buf.formatting_sync{timeout_ms=50}")
+    vim.api.nvim_command("autocmd BufWritePre * lua vim.lsp.buf.format { timeout_ms=50 }")
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
         vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
