@@ -100,7 +100,12 @@ require("packer").startup(function(use)
     }
 
     -- Make it easier to access the registers.
-    use "tversteeg/registers.nvim"
+    use {
+        "tversteeg/registers.nvim",
+        config = function()
+            require("registers").setup()
+        end
+    }
 
     -- Have a start screen with easy jumping to recent files
     use {
