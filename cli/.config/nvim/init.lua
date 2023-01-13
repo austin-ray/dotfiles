@@ -103,7 +103,13 @@ require("packer").startup(function(use)
     use "tversteeg/registers.nvim"
 
     -- Have a start screen with easy jumping to recent files
-    use "mhinz/vim-startify"
+    use {
+        "goolord/alpha-nvim",
+        require = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("alpha").setup(require("alpha.themes.startify").config)
+        end
+    }
 
     use {
         "numToStr/Comment.nvim",
