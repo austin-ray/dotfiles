@@ -235,6 +235,22 @@ cmp.setup({
     },
 })
 
+-- Create a helper function for adding `autocmd`s to a group.
+--
+-- Example usage:
+-- ```lua
+-- local some_plugin_augroup = nvim.nvim_create_augroup("some_plugin", {})
+-- local plugin_autocmd = grouped_autocmd(some_plugin_augroup)
+--
+-- plugin_autocmd("BufWritePre", { command = "some vim command" })
+-- plugin_autocmd("BufWritePost", { command = "some vim command" })
+-- ```
+local grouped_autocmd = function(group)
+    return function(event, opts)
+        opts.group = group
+        vim.api.nvim_create_autocmd(event, opts)
+    end
+end
 
 -- LSP configurations
 -- Override default Vim with sensible LSP verisons.
@@ -257,15 +273,16 @@ local on_attach = function(client)
     vim.keymap.set("n", "<M-k>", vim.lsp.buf.signature_help, opts)
     vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
 
-    vim.api.nvim_command("augroup LSP")
-    vim.api.nvim_command("autocmd!")
-    vim.api.nvim_command("autocmd BufWritePre * lua vim.lsp.buf.format()")
+
+    local lsp_ag = vim.api.nvim_create_augroup("LSP", {})
+    local lsp_autocmd = grouped_autocmd(lsp_ag)
+
+    lsp_autocmd("BufWritePre", { buffer = 0, command = "lua vim.lsp.buf.format()" })
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
-        vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
-        vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
+        lsp_autocmd("CursorHold", { buffer = 0, callback = vim.lsp.buf.document_highlight })
+        lsp_autocmd("CursorHoldI", { buffer = 0, callback = vim.lsp.buf.document_highlight })
+        lsp_autocmd("CursorMoved", { buffer = 0, callback = vim.lsp.buf.clear_references })
     end
-    vim.api.nvim_command("augroup END")
 
     -- Define highlight groups for document highlights
     vim.api.nvim_command([[
