@@ -69,9 +69,18 @@ require("packer").startup(function(use)
     use "mhinz/vim-signify"
 
     use {
-        "phaazon/hop.nvim",
-        branch = "v2",
-        config = function() require("hop").setup() end
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").add_default_mappings()
+        end
+    }
+
+    use {
+        "ggandor/flit.nvim",
+        requires = { "ggandor/leap.nvim" },
+        config = function()
+            require("flit").setup()
+        end
     }
 
     use {
@@ -172,9 +181,6 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
         vim.b.AutoPairs = vim.fn.AutoPairsDefine({ ["<"] = ">" })
     end
 })
-
--- Hop configuration
-vim.keymap.set("n", "f", function() require("hop").hint_char1() end)
 
 -- Setup nvim-cmp.
 local cmp = require("cmp")
