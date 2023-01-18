@@ -185,14 +185,6 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
     end
 })
 
--- Autopair configuration
-vim.api.nvim_create_autocmd({ "Filetype" }, {
-    pattern = "java",
-    callback = function()
-        vim.b.AutoPairs = vim.fn.AutoPairsDefine({ ["<"] = ">" })
-    end
-})
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 if not cmp then return end
