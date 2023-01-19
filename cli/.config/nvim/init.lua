@@ -158,6 +158,10 @@ vim.keymap.set("n", "<leader>tt", function()
     -- vim.go.equalalwaytrues = false
 end)
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><Cmd>wincmd h<CR>", { silent = true })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><Cmd>wincmd j<CR>", { silent = true })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><Cmd>wincmd k<CR>", { silent = true })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><Cmd>wincmd l<CR>", { silent = true })
 
 -- Delegate folding to treesitter
 vim.opt.foldmethod = "expr"
