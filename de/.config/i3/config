@@ -233,4 +233,6 @@ exec solaar --window=hide &
 exec xrandr --output HDMI-0 --primary
 exec xrandr --output DP-0 --left-of HDMI-0 --rotate left
 
+exec --no-startup-id blueman-applet &
+
 workspace 10 output DP-0
