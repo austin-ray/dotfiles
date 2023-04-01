@@ -170,10 +170,10 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
 
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
 
 vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 5
