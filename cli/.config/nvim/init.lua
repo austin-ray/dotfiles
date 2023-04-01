@@ -315,7 +315,7 @@ lspconfig.hls.setup {}
 lspconfig.pylsp.setup {}
 lspconfig.rnix.setup {}
 lspconfig.rust_analyzer.setup {}
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     settings = {
         Lua = {
             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
