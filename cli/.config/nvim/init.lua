@@ -45,131 +45,131 @@ vim.opt.sidescrolloff = 5
 
 -- ############################## Plugins ##################################
 
--- Automatically install the packer plugin manager.
-local install_path = vim.fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
-        install_path })
+-- Automatically install the `lazy` plugin manager.
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require("packer").startup(function(use)
+require("lazy").setup({
     -- Plugin manager
-    use "wbthomason/packer.nvim"
+    "folke/lazy.nvim",
 
     -- Grammar checker
-    use "davidbeckingsale/writegood.vim"
+    "davidbeckingsale/writegood.vim",
 
     -- Colorschemes
-    use "chriskempson/base16-vim"
+    "chriskempson/base16-vim",
 
     -- Automatically respect project-specific formatting.
-    use "editorconfig/editorconfig-vim"
+    "editorconfig/editorconfig-vim",
 
     -- Enable syntax highlighting for hundreds of file formats.
-    use "sheerun/vim-polyglot"
+    "sheerun/vim-polyglot",
 
     -- Enable LSP for better development experience.
-    use {
+    {
         "neovim/nvim-lspconfig",
         -- Helper to install LSP servers.
-        { "williamboman/mason-lspconfig.nvim", requires = { "williamboman/mason.nvim" } }
-    }
+        { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" } }
+    },
 
     -- LSP works better with a completion engine.
-    use {
+    {
         "hrsh7th/nvim-cmp",
-        requires = {
+        dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
         }
-    }
+    },
 
-    use {
+    {
         "L3MON4D3/LuaSnip",
-        requires = {
+        dependencies = {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
         }
-    }
+    },
 
     -- Telescope for file navigation
-    use {
+    {
         "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim" }
-    }
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
     -- Treesitter required for Neorg
-    use {
+    {
         "nvim-treesitter/nvim-treesitter",
-        run = function()
-            require("nvim-treesitter.install").update({ with_sync = true })
-        end
-    }
+        build = ":TSUpdate",
+    },
 
     -- Neorg for an org-mode experience
-    use "vhyrro/neorg"
+    "vhyrro/neorg",
 
-    use "tpope/vim-fugitive"
-    use "mhinz/vim-signify"
+    "tpope/vim-fugitive",
+    "mhinz/vim-signify",
 
-    use {
+    {
         "ggandor/leap.nvim",
         config = function()
             require("leap").add_default_mappings()
         end
-    }
+    },
 
-    use {
+    {
         "ggandor/flit.nvim",
-        requires = { "ggandor/leap.nvim" },
+        dependencies = { "ggandor/leap.nvim" },
         config = function()
             require("flit").setup()
         end
-    }
+    },
 
-    use {
+    {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    }
+    },
 
-    use {
+    {
         "folke/trouble.nvim",
-        requires = { "kyazdani42/nvim-web-devicons" }
-    }
+        dependencies = { "kyazdani42/nvim-web-devicons" }
+    },
 
     -- For easily wrapping selections with characters
-    use {
+    {
         "kylechui/nvim-surround",
         config = function() require("nvim-surround").setup() end,
-    }
+    },
 
     -- Make it easier to access the registers.
-    use {
+    {
         "tversteeg/registers.nvim",
         config = function()
             require("registers").setup()
         end
-    }
+    },
 
     -- Have a start screen with easy jumping to recent files
-    use {
+    {
         "goolord/alpha-nvim",
         require = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("alpha").setup(require("alpha.themes.startify").config)
         end
-    }
-
-    use {
+    },
+    {
         "numToStr/Comment.nvim",
         config = function() require("Comment").setup() end
-    }
-
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
-end)
+    },
+})
 
 -- ######################## Plugin-related configuration #######################
 
