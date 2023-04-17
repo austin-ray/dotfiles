@@ -1,3 +1,48 @@
+-- ########################### Base Vim configuration ##########################
+
+-- Space is more convenient than \
+vim.g.mapleader = " "
+
+-- Quick access to configuration file.
+vim.keymap.set("n", "<leader>ce", "<cmd>e $MYVIMRC<cr>")
+vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
+
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Tab to spaces
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
+-- Enable 24-bit color allowing color scheme to work without visual errors.
+vim.opt.termguicolors = true
+
+-- Keep UI from shifting by always showing the signcolumn
+vim.opt.signcolumn = "yes"
+
+vim.keymap.set("n", "<leader>tt", function()
+    -- TODO: Convert this to Lua code.
+    vim.api.nvim_command('botright 24split +terminal')
+    -- vim.go.equalalwaytrues = false
+end)
+vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
+vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
+vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
+vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
+vim.api.nvim_create_autocmd({ "TermOpen" }, { pattern = { "*" }, command = "startinsert" })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "term://*" }, command = "startinsert" })
+
+vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
+
+vim.opt.scrolloff = 1
+vim.opt.sidescrolloff = 5
+
 -- ############################## Plugins ##################################
 
 -- Automatically install the packer plugin manager.
@@ -126,59 +171,15 @@ require("packer").startup(function(use)
     end
 end)
 
--- ########################### Base Vim configuration ##########################
+-- ######################## Plugin-related configuration #######################
 
--- Space is more convenient than \
-vim.g.mapleader = " "
-
--- Quick access to configuration file.
-vim.keymap.set("n", "<leader>ce", "<cmd>e $MYVIMRC<cr>")
-vim.keymap.set("n", "<leader>cr", "<cmd>source $MYVIMRC<cr>")
-
--- Line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- Tab to spaces
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-
--- Enable 24-bit color allowing color scheme to work without visual errors.
-vim.opt.termguicolors = true
 -- TODO: Convert this to Lua when API comes out.
 vim.cmd("colorscheme base16-eighties")
-
--- Keep UI from shifting by always showing the signcolumn
-vim.opt.signcolumn = "yes"
-
-vim.keymap.set("n", "<leader>tt", function()
-    -- TODO: Convert this to Lua code.
-    vim.api.nvim_command('botright 24split +terminal')
-    -- vim.go.equalalwaytrues = false
-end)
-vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
-vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
-vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
-vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
-vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
-vim.api.nvim_create_autocmd({ "TermOpen" }, { pattern = { "*" }, command = "startinsert" })
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "term://*" }, command = "startinsert" })
 
 -- Delegate folding to treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
-
-vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
-
-vim.opt.scrolloff = 1
-vim.opt.sidescrolloff = 5
-
--- ######################## Plugin-related configuration #######################
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
