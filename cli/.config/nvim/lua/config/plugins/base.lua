@@ -88,7 +88,7 @@ return {
                 local lsp_ag = vim.api.nvim_create_augroup("LSP", {})
                 local lsp_autocmd = grouped_autocmd(lsp_ag)
 
-                lsp_autocmd("BufWritePre", { buffer = 0, command = "lua vim.lsp.buf.format()" })
+                lsp_autocmd("BufWritePre", { buffer = 0, callback = function() vim.lsp.buf.format { async = false } end })
                 if client.server_capabilities.documentHighlightProvider then
                     lsp_autocmd("CursorHold", { buffer = 0, callback = vim.lsp.buf.document_highlight })
                     lsp_autocmd("CursorHoldI", { buffer = 0, callback = vim.lsp.buf.document_highlight })
