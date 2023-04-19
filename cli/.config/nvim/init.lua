@@ -16,7 +16,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- ~/.config/nvim/lua/config/plugins
-require("lazy").setup("config.plugins")
+require("lazy").setup("config.plugins", {
+    change_detection = { notify = false },
+})
 
 -- Try loading a work configuration.
 -- ~/.config/nvim/lua/config/work.lua
