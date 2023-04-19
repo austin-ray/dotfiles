@@ -34,6 +34,15 @@ return {
     -- Enable LSP for better development experience.
     {
         "neovim/nvim-lspconfig",
+        ft = {
+            "c",
+            "cpp",
+            "rust",
+            "haskell",
+            "nix",
+            "lua",
+            "python",
+        },
         -- Helper to install LSP servers.
         dependencies = { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" } },
         config = function()
@@ -134,6 +143,7 @@ return {
     -- LSP works better with a completion engine.
     {
         "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
@@ -193,6 +203,7 @@ return {
 
     {
         "L3MON4D3/LuaSnip",
+        event = "InsertEnter",
         dependencies = {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
@@ -235,6 +246,7 @@ return {
     -- Telescope for file navigation
     {
         "nvim-telescope/telescope.nvim",
+        lazy = true,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("telescope").setup({
@@ -263,23 +275,25 @@ return {
                     },
                 },
             })
-
-            local telescope_fn = require("telescope.builtin")
-            vim.keymap.set("n", "<leader>ff", telescope_fn.find_files)
-            vim.keymap.set("n", "<leader>fgg", telescope_fn.live_grep)
-            vim.keymap.set("n", "<leader>fgo", function()
-                telescope_fn.live_grep({ grep_open_files = true })
-            end)
-            vim.keymap.set("n", "<leader>fb", telescope_fn.buffers)
-            vim.keymap.set("n", "<leader>fh", telescope_fn.help_tags)
-            vim.keymap.set("n", "<leader>ftr", telescope_fn.resume)
-            vim.keymap.set("n", "<leader>fsw", telescope_fn.lsp_workspace_symbols)
-            vim.keymap.set("n", "<leader>fss", telescope_fn.lsp_document_symbols)
-        end
+        end,
+        keys = {
+            { "<leader>ff",  function() require("telescope.builtin").find_files() end },
+            { "<leader>fgg", function() require("telescope.builtin").live_grep() end },
+            { "<leader>fgo", function()
+                require("telescope.builtin").live_grep({ grep_open_files = true })
+            end
+            },
+            { "<leader>fb",  function() require("telescope.builtin").buffers() end },
+            { "<leader>fh",  function() require("telescope.builtin").help_tags() end },
+            { "<leader>ftr", function() require("telescope.builtin").resume() end },
+            { "<leader>fsw", function() require("telescope.builtin").lsp_workspace_symbols() end },
+            { "<leader>fss", function() require("telescope.builtin").lsp_document_symbols() end },
+        },
     },
 
     {
         "nvim-treesitter/nvim-treesitter",
+        ft = { "lua", "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto", },
         build = ":TSUpdate",
         config = function()
             -- Delegate folding to treesitter
@@ -288,7 +302,7 @@ return {
             vim.opt.foldlevel = 99
 
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto" },
+                ensure_installed = { "lua", "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto" },
                 highlight = {
                     enable = true,
                 },
@@ -299,6 +313,8 @@ return {
     -- Neorg for an org-mode experience
     {
         "nvim-neorg/neorg",
+        ft = "norg",
+        cmd = "Neorg",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
         build = ":Neorg sync-parsers",
         config = function()
@@ -391,4 +407,11 @@ return {
         "numToStr/Comment.nvim",
         config = function() require("Comment").setup() end
     },
+    {
+        "dstein64/vim-startuptime",
+        cmd = "StartupTime",
+        config = function()
+            vim.g.startuptime_tries = 100
+        end
+    }
 }
