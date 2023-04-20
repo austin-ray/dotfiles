@@ -15,6 +15,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+if os.getenv("NVIM") ~= nil then
+    require("lazy").setup {
+        { "willothy/flatten.nvim", config = true },
+    }
+end
+
 -- ~/.config/nvim/lua/config/plugins
 require("lazy").setup("config.plugins", {
     change_detection = { notify = false },

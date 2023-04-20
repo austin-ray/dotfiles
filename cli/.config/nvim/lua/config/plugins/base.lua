@@ -413,5 +413,15 @@ return {
         config = function()
             vim.g.startuptime_tries = 100
         end
+    },
+    {
+        "willothy/flatten.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            window = {
+                open = "alternative",
+            }
+        }
     }
 }
