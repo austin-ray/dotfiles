@@ -3,7 +3,7 @@ Host              imap.gmail.com
 User              austin@austinray.io
 PassCmd           "pass show Mail/austin"
 SSLType           IMAPS
-SSLVersions       TLSv1.1
+SSLVersions       TLSv1.3
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore         austin@austinray.io-remote
@@ -62,7 +62,7 @@ Host              imap.gmail.com
 User              austinray1995@gmail.com
 PassCmd           "pass show Mail/austinray1995"
 SSLType           IMAPS
-SSLVersions       TLSv1.1
+SSLVersions       TLSv1.3
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore         austinray1995@gmail.com-remote
@@ -113,7 +113,7 @@ Host              imap.gmail.com
 User              austin.duke.ray@gmail.com
 PassCmd           "pass show Mail/austin.duke.ray"
 SSLType           IMAPS
-SSLVersions       TLSv1.1
+SSLVersions       TLSv1.3
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore         austin.duke.ray@gmail.com-remote
@@ -164,7 +164,7 @@ Host              imap.gmail.com
 User              rangebro99@gmail.com
 PassCmd           "pass show Mail/rangebro99"
 SSLType           IMAPS
-SSLVersions       TLSv1.1
+SSLVersions       TLSv1.3
 CertificateFile   /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore         rangebro99@gmail.com-remote
