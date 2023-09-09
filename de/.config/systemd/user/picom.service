@@ -1,0 +1,14 @@
+[Unit]
+Description=X11 compositor
+Documentation=man:picom(1)
+PartOf=i3-session.target
+Requires=i3-session.target
+After=i3-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/picom
+Restart=always
+
+[Install]
+WantedBy=i3-session.target
