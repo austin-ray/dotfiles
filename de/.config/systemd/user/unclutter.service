@@ -1,0 +1,14 @@
+[Unit]
+Description=Hide the mouse cursor if it isn't being used.
+Documentation=man:unclutter(1)
+PartOf=i3-session.target
+Requires=i3-session.target
+After=i3-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/unclutter
+Restart=always
+
+[Install]
+WantedBy=i3-session.target

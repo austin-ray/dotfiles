@@ -1,0 +1,11 @@
+[Unit]
+Description=Linux Device Manager for Logitech Unifying Receivers and Devices.
+Documentation=man:ibus-daemon(1)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ibus-daemon -x
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

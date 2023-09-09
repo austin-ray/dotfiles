@@ -1,0 +1,15 @@
+[Unit]
+Description=Polkit authentication agent.
+Documentation=man:polkit(1)
+Documentation=https://askubuntu.com/questions/799125/authentication-agent-and-i3wm
+PartOf=i3-session.target
+Requires=i3-session.target
+After=i3-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/polkit-gnome-authentication-agent-1
+Restart=always
+
+[Install]
+WantedBy=i3-session.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Linux Device Manager for Logitech Unifying Receivers and Devices.
+Documentation=https://pwr-solaar.github.io/Solaar
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/solaar --window=hide
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

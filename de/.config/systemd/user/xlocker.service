@@ -1,0 +1,15 @@
+[Unit]
+Description=Lock X11 session based on events with xss-lock and xsecurelock.
+Documentation=man:xss-lock(1)
+Documentation=man:xsecurelock(1)
+PartOf=i3-session.target
+Requires=i3-session.target
+After=i3-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+Restart=always
+
+[Install]
+WantedBy=i3-session.target
