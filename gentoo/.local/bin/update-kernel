@@ -1,9 +1,9 @@
 #!/bin/sh
 update_kernel() {
   eselect kernel list
-  read -p "Select new kernel [n to exit]: " answer
   while true;
   do
+    read -p "Select new kernel [n to exit]: " answer
     case "$answer" in
       [123456789]* )
         eselect kernel set $answer
