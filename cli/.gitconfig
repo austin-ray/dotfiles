@@ -24,3 +24,6 @@
 	pager = diff-highlight | less
 [diff]
 	tool = nvimdiff
+[pull]
+	ff = only
+	rebase = merges
