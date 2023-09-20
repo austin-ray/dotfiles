@@ -214,7 +214,7 @@ bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
 bindsym XF86AudioMute exec pulsemixer --mute
 
 # i3-gaps
-new_window pixel
+default_border pixel
 for_window [class="^.*"] border pixel 1
 
 exec /usr/bin/xset s 300 5
