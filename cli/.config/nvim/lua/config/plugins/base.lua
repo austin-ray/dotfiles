@@ -29,7 +29,10 @@ return {
     "editorconfig/editorconfig-vim",
 
     -- Enable syntax highlighting for hundreds of file formats.
-    "sheerun/vim-polyglot",
+    {
+        "sheerun/vim-polyglot",
+        lazy = true
+    },
 
     -- Enable LSP for better development experience.
     {
