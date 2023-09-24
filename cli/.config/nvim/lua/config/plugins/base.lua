@@ -9,7 +9,7 @@ return {
             vim.api.nvim_create_autocmd({ "Filetype" }, {
                 pattern = { "gitcommit", "mail" },
                 callback = function()
-                    vim.cmd("WritegoodEnable")
+                    vim.cmd.WritegoodEnable()
                     vim.wo.spell = true
                 end
             })
@@ -20,8 +20,7 @@ return {
     {
         "chriskempson/base16-vim",
         config = function()
-            -- TODO: Convert this to Lua when API comes out.
-            vim.cmd("colorscheme base16-eighties")
+            vim.cmd.colorscheme("base16-eighties")
         end,
     },
 
