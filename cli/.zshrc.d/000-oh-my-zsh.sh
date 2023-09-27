@@ -68,7 +68,7 @@ ZSH_THEME="typewritten"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting fzf)
 
 # SSH agent config.
 zstyle :omz:plugins:ssh-agent quiet yes
