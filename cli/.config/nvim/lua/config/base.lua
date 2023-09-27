@@ -32,8 +32,6 @@ vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
 vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
 vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
 vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
-vim.api.nvim_create_autocmd({ "TermOpen" }, { pattern = { "*" }, command = "startinsert" })
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "term://*" }, command = "startinsert" })
 
 vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
 vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
