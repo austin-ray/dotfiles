@@ -198,13 +198,18 @@ return {
                     { name = "nvim_lsp" },
                     { name = "nvim_lsp_signature_help" },
                     { name = "luasnip" },
-                    { name = "buffer",                 keyword_length = 5 },
+                    {
+                        name = "buffer",
+                        keyword_length = 5
+                    },
                 },
                 sorting = {
                     comparators = {
                         cmp.config.compare.offset,
                         cmp.config.compare.exact,
                         cmp.config.compare.score,
+                        cmp.config.compare.recently_used,
+                        cmp.config.compare.locality,
                         cmp.config.compare.kind,
                         cmp.config.compare.sort_text,
                         cmp.config.compare.length,
