@@ -1,3 +1,17 @@
+local treesitter_languages = {
+    "c",
+    "cpp",
+    "go",
+    "haskell",
+    "javascript",
+    "lua",
+    "norg",
+    "proto",
+    "python",
+    "query",
+    "rust",
+}
+
 return {
     -- Plugin manager
     "folke/lazy.nvim",
@@ -295,7 +309,7 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        ft = { "lua", "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto", },
+        ft = treesitter_languages,
         build = ":TSUpdate",
         config = function()
             -- Delegate folding to treesitter
@@ -304,7 +318,7 @@ return {
             vim.opt.foldlevel = 99
 
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "lua", "norg", "haskell", "cpp", "c", "javascript", "rust", "go", "proto" },
+                ensure_installed = treesitter_languages,
                 highlight = {
                     enable = true,
                 },
