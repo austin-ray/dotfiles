@@ -362,14 +362,12 @@ return {
     {
         "ggandor/flit.nvim",
         dependencies = { "ggandor/leap.nvim" },
-        config = function()
-            require("flit").setup()
-        end
+        config = true
     },
 
     {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        config = true
     },
 
     {
@@ -392,9 +390,7 @@ return {
     -- Make it easier to access the registers.
     {
         "tversteeg/registers.nvim",
-        config = function()
-            require("registers").setup()
-        end
+        config = true
     },
 
     -- Have a start screen with easy jumping to recent files
@@ -407,7 +403,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        config = function() require("Comment").setup() end
+        config = true
     },
     {
         "dstein64/vim-startuptime",
