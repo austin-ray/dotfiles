@@ -425,4 +425,19 @@ return {
             vim.g.startuptime_tries = 100
         end
     },
+    {
+        "akinsho/toggleterm.nvim",
+        keys = "<leader>tt",
+        opts = {
+            open_mapping = "<leader>tt",
+            size = function(term)
+                if term.direction == "horizontal" then
+                    return vim.o.lines * 0.35
+                elseif term.direction == "vertical" then
+                    return vim.o.columns * 0.4
+                end
+            end,
+            shade_terminals = false,
+        },
+    }
 }

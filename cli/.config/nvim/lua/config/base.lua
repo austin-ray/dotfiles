@@ -22,11 +22,6 @@ vim.opt.termguicolors = true
 -- Keep UI from shifting by always showing the signcolumn
 vim.opt.signcolumn = "yes"
 
-vim.keymap.set("n", "<leader>tt", function()
-    -- TODO: Convert this to Lua code.
-    vim.api.nvim_command('botright 24split +terminal')
-    -- vim.go.equalalwaytrues = false
-end)
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
 vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
 vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
