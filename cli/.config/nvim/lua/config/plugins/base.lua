@@ -23,10 +23,16 @@ return {
         "davidbeckingsale/writegood.vim",
         config = function()
             vim.api.nvim_create_autocmd({ "Filetype" }, {
-                pattern = { "gitcommit", "mail" },
+                pattern = { "gitcommit", "mail", "jjdescription" },
                 callback = function()
                     vim.cmd.WritegoodEnable()
                     vim.wo.spell = true
+                end
+            })
+            vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
+                pattern = "*.jjdescription",
+                callback = function()
+                    vim.cmd.WritegoodEnable()
                 end
             })
         end,

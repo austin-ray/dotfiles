@@ -38,3 +38,12 @@ vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
 
 vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 5
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
+    group = vim.api.nvim_create_augroup("jj_settings", {}),
+    pattern = "*.jjdescription",
+    callback = function()
+        vim.wo.spell = true
+        vim.bo.textwidth = 80
+    end
+})
