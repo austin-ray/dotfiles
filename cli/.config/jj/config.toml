@@ -1,3 +1,11 @@
 [user]
 name = "Austin Ray"
 email = "austin@austinray.io"
+
+[ui.diff]
+format = "git"
+
+[signing]
+sign-all = true
+backend = "gpg"
+key = "0127ED83B939CCC98082476E1AA0B115C8AC2C9E"
