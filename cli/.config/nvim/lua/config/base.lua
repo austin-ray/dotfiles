@@ -22,6 +22,9 @@ vim.opt.termguicolors = true
 -- Keep UI from shifting by always showing the signcolumn
 vim.opt.signcolumn = "yes"
 
+-- Disable mouse since I never use it in nvim and it messes with terminal copy.
+vim.o.mouse = ""
+
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
 vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
 vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
