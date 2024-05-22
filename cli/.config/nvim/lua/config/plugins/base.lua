@@ -89,7 +89,7 @@ return {
 
             -- LSP configurations
             -- Override default Vim with sensible LSP verisons.
-            local on_attach = function(client)
+            local on_attach = function(client, bufnr)
                 vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
                 local opts = { buffer = true, silent = true }
@@ -112,11 +112,12 @@ return {
                 local lsp_ag = vim.api.nvim_create_augroup("LSP", {})
                 local lsp_autocmd = grouped_autocmd(lsp_ag)
 
-                lsp_autocmd("BufWritePre", { buffer = 0, callback = function() vim.lsp.buf.format { async = false } end })
+                lsp_autocmd("BufWritePre",
+                    { buffer = bufnr, callback = function() vim.lsp.buf.format { async = false } end })
                 if client.server_capabilities.documentHighlightProvider then
-                    lsp_autocmd("CursorHold", { buffer = 0, callback = vim.lsp.buf.document_highlight })
-                    lsp_autocmd("CursorHoldI", { buffer = 0, callback = vim.lsp.buf.document_highlight })
-                    lsp_autocmd("CursorMoved", { buffer = 0, callback = vim.lsp.buf.clear_references })
+                    lsp_autocmd("CursorHold", { buffer = bufnr, callback = vim.lsp.buf.document_highlight })
+                    lsp_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight })
+                    lsp_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references })
                 end
 
                 -- Define highlight groups for document highlights
