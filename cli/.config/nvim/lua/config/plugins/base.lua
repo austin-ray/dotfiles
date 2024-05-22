@@ -5,6 +5,8 @@ local treesitter_languages = {
     "haskell",
     "javascript",
     "lua",
+    "markdown",
+    "markdown_inline",
     "norg",
     "proto",
     "python",
@@ -325,40 +327,24 @@ return {
         end,
     },
 
-    -- Neorg for an org-mode experience
     {
-        "nvim-neorg/neorg",
-        ft = "norg",
-        cmd = "Neorg",
-        dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-        build = ":Neorg sync-parsers",
+        "epwalsh/obsidian.nvim",
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
-            -- neorg configuration
-            require("neorg").setup({
-                -- Tell Neorg what modules to load
-                load = {
-                    ["core.defaults"] = {},  -- Load all the default modules
-                    ["core.concealer"] = {}, -- Allows for use of icons
-                    ["core.dirman"] = {      -- Manage your directories with Neorg
-                        config = {
-                            workspaces = {
-                                my_workspace = "~/neorg",
-                            },
-                        },
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "personal",
+                        path = "~/syncthing/notes",
                     },
-                },
+                }
             })
-
-            -- Tree-sitter configuration
-            local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
-            parser_configs.norg = {
-                install_info = {
-                    url = "https://github.com/vhyrro/tree-sitter-norg",
-                    files = { "src/parser.c", "src/scanner.cc" },
-                    branch = "main",
-                },
-            }
         end,
     },
 
