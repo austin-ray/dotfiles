@@ -40,12 +40,6 @@ return {
 
     -- Colorschemes
     {
-        "chriskempson/base16-vim",
-        config = function()
-            vim.cmd.colorscheme("base16-eighties")
-        end,
-    },
-    {
         "echasnovski/mini.base16",
         config = function()
             require("mini.base16").setup({
