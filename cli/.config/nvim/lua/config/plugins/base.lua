@@ -65,9 +65,6 @@ return {
         end
     },
 
-    -- Automatically respect project-specific formatting.
-    "editorconfig/editorconfig-vim",
-
     -- Enable syntax highlighting for hundreds of file formats.
     {
         "sheerun/vim-polyglot",
