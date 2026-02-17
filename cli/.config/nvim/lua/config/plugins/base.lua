@@ -141,13 +141,6 @@ return {
                     lsp_autocmd("CursorHoldI", { buffer = bufnr, callback = vim.lsp.buf.document_highlight })
                     lsp_autocmd("CursorMoved", { buffer = bufnr, callback = vim.lsp.buf.clear_references })
                 end
-
-                -- Define highlight groups for document highlights
-                vim.api.nvim_command([[
-                    highlight link LspReferenceText  Visual
-                    highlight link LspReferenceRead  Visual
-                    highlight link LspReferenceWrite Visual
-                ]])
             end
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
