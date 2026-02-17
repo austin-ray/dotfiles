@@ -344,27 +344,6 @@ return {
         end,
     },
 
-    {
-        "epwalsh/obsidian.nvim",
-        lazy = true,
-        ft = "markdown",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            require("obsidian").setup({
-                workspaces = {
-                    {
-                        name = "personal",
-                        path = "~/syncthing/notes",
-                    },
-                }
-            })
-        end,
-    },
-
     "tpope/vim-fugitive",
     "mhinz/vim-signify",
 
