@@ -155,7 +155,15 @@ return {
             vim.lsp.enable("clangd")
             vim.lsp.enable("hls")
             vim.lsp.enable("pylsp")
-            vim.lsp.enable("rnix")
+            vim.lsp.enable("nil_ls", {
+                settings = {
+                    ["nil"] = {
+                        formatting = {
+                            command = { "nixfmt" },
+                        },
+                    },
+                },
+            })
             vim.lsp.enable("rust_analyzer")
             vim.lsp.enable("lua_ls")
         end
