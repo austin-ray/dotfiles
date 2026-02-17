@@ -392,17 +392,6 @@ return {
         config = true
     },
 
-    {
-        "folke/trouble.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("trouble").setup({
-                auto_open = true,
-                auto_close = true,
-            })
-        end,
-    },
-
     -- For easily wrapping selections with characters
     {
         "kylechui/nvim-surround",
