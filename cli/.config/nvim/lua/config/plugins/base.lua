@@ -21,6 +21,7 @@ return {
     -- Grammar checker
     {
         "davidbeckingsale/writegood.vim",
+        event = "VeryLazy",
         config = function()
             vim.api.nvim_create_autocmd({ "Filetype" }, {
                 pattern = { "gitcommit", "mail", "jjdescription" },
@@ -68,7 +69,7 @@ return {
     -- Enable syntax highlighting for hundreds of file formats.
     {
         "sheerun/vim-polyglot",
-        lazy = true
+        event = "VeryLazy",
     },
 
     -- Enable LSP for better development experience.
@@ -327,7 +328,7 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        ft = treesitter_languages,
+        event = "VeryLazy",
         build = ":TSUpdate",
         config = function()
             -- Delegate folding to treesitter
@@ -344,10 +345,14 @@ return {
         end,
     },
 
-    "mhinz/vim-signify",
+    {
+        "mhinz/vim-signify",
+        event = "VeryLazy",
+    },
 
     {
         url = "https://codeberg.org/andyg/leap.nvim",
+        event = "VeryLazy",
         config = function()
             vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
             vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
@@ -359,23 +364,27 @@ return {
         dependencies = {
             url = "https://codeberg.org/andyg/leap.nvim",
         },
+        event = "VeryLazy",
         config = true
     },
 
     {
         "windwp/nvim-autopairs",
+        event = "VeryLazy",
         config = true
     },
 
     -- For easily wrapping selections with characters
     {
         "kylechui/nvim-surround",
+        event = "VeryLazy",
         config = function() require("nvim-surround").setup() end,
     },
 
     -- Make it easier to access the registers.
     {
         "tversteeg/registers.nvim",
+        event = "VeryLazy",
         config = true
     },
 
@@ -389,6 +398,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
+        event = "VeryLazy",
         config = true
     },
     {
