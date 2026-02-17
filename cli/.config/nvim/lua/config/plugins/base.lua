@@ -344,7 +344,6 @@ return {
         end,
     },
 
-    "tpope/vim-fugitive",
     "mhinz/vim-signify",
 
     {
