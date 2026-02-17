@@ -296,6 +296,9 @@ return {
                             i = {
                                 ["<C-d>"] = "delete_buffer",
                             },
+                            n = {
+                                ["dd"] = "delete_buffer",
+                            },
                         },
                     },
                 },
