@@ -92,7 +92,6 @@ return {
                 "williamboman/mason-lspconfig.nvim",
                 dependencies = { "williamboman/mason.nvim" },
             },
-            { "folke/neodev.nvim", opts = {} }
         },
         config = function()
             -- Create a helper function for adding `autocmd`s to a group.
