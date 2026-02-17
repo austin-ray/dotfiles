@@ -143,28 +143,22 @@ return {
                 end
             end
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
             require("mason").setup()
             require("mason-lspconfig").setup()
-            local lspconfig = require("lspconfig")
-            lspconfig.util.default_config = vim.tbl_deep_extend(
-                "force",
-                lspconfig.util.default_config,
-                {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    flags = {
-                        debounce_text_changes = 500,
-                    }
-                })
+            vim.lsp.config['*'] = {
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                on_attach = on_attach,
+                flags = {
+                    debounce_text_changes = 500,
+                },
+            }
 
-            lspconfig.clangd.setup {}
-            lspconfig.hls.setup {}
-            lspconfig.pylsp.setup {}
-            lspconfig.rnix.setup {}
-            lspconfig.rust_analyzer.setup {}
-            lspconfig.lua_ls.setup {}
+            vim.lsp.enable("clangd")
+            vim.lsp.enable("hls")
+            vim.lsp.enable("pylsp")
+            vim.lsp.enable("rnix")
+            vim.lsp.enable("rust_analyzer")
+            vim.lsp.enable("lua_ls")
         end
     },
 
